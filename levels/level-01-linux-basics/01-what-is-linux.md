@@ -185,3 +185,12 @@ The goal isn't to remember every definition—it's to understand the big picture
 The commands will come soon, and that's where the real fun begins. 🐧
 
 ➡️ **Next Lesson:** *02 - History of Linux*
+## 🧭 What's Next?
+
+➡️ Next Lesson: History of Linux
+
+You'll learn:
+- Why Linux was created
+- Who created it
+- The story behind Linux
+- Why the penguin 🐧 became its mascot.
