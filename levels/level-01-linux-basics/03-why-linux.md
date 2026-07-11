@@ -117,6 +117,11 @@ If you get stuck, thousands of developers are ready to help through forums, docu
 Learning Linux is much easier because of its active global community.
 
 ---
+## 🖼️ Big Picture
+
+Before diving deeper, here's a simple overview of why Linux is such an important operating system.
+
+> 📁 Diagram available in: `assets/diagrams/why-linux-overview.md`
 
 # 🌍 Real World Applications
 
