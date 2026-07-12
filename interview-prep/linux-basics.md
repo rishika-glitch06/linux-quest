@@ -134,3 +134,51 @@ Remember these keywords:
 - AI
 - Docker
 - Kubernetes
+
+---
+
+# 📖 Lesson 04 - Linux Kernel
+
+## Q1. What is the Linux Kernel?
+
+**Answer:**
+
+The Linux Kernel is the core component of the Linux operating system. It acts as a bridge between software and hardware by managing system resources and hardware communication.
+
+---
+
+## Q2. What are the main responsibilities of the Kernel?
+
+**Answer:**
+
+- Process Management
+- Memory Management
+- Device Management
+- File System Management
+- Security and Permissions
+
+---
+
+## Q3. Why can't applications communicate directly with hardware?
+
+**Answer:**
+
+Applications communicate with the Kernel, and the Kernel safely interacts with the hardware using device drivers.
+
+---
+
+## Q4. Which type of Kernel does Linux use?
+
+**Answer:**
+
+Linux uses a **Monolithic Kernel**, where most operating system services run inside the Kernel space.
+
+---
+
+## Q5. What is the difference between User Space and Kernel Space?
+
+**Answer:**
+
+User Space is where applications run with limited permissions.
+
+Kernel Space is where the Kernel runs with full access to system hardware and resources.
