@@ -218,3 +218,63 @@ Thinking every distribution works differently.
 Almost all Linux distributions share the same core concepts.
 
 Only tools, package managers, desktop environments, and configurations differ.
+---
+
+# 📝 Quick Recap
+
+Today you learned that:
+
+- ✅ Linux is a Kernel, not a complete Operating System.
+- ✅ A Linux Distribution combines the Linux Kernel with software, utilities, and tools.
+- ✅ Different distributions are designed for different purposes.
+- ✅ Ubuntu is beginner-friendly.
+- ✅ Debian is known for stability.
+- ✅ Fedora focuses on the latest technologies.
+- ✅ Arch Linux provides maximum customization.
+- ✅ Kali Linux is designed for cybersecurity professionals.
+
+---
+
+# 🎯 Mini Challenge
+
+Without searching online, try answering these questions:
+
+1. What is a Linux Distribution?
+2. Name five popular Linux distributions.
+3. Which distribution is best for beginners?
+4. Which distribution is commonly used for cybersecurity?
+5. What is the difference between the Linux Kernel and a Linux Distribution?
+
+---
+
+# ☕ Coffee Break
+
+Take a moment and think about the Linux distribution you would personally choose.
+
+If you're learning Linux for development or DevOps, Ubuntu is a great place to start.
+
+If you're curious about Linux internals, Arch Linux can be an exciting challenge later in your journey.
+
+Remember:
+
+> **Every Linux distribution shares the same foundation—the Linux Kernel.**
+
+---
+
+# 🧭 What's Next?
+
+Great job! 🎉
+
+You've now understood what Linux Distributions are and why so many of them exist.
+
+In the next lesson, we'll explore another important concept:
+
+## 🖥️ Lesson 06 – GUI vs CLI
+
+We'll learn:
+
+- What is a GUI?
+- What is a CLI?
+- Why Linux professionals love the terminal.
+- Advantages and disadvantages of both.
+- Which one should you use as a beginner?
