@@ -110,6 +110,11 @@ Same Linux Kernel.
 | Cannot be comfortably used alone | Ready for daily use |
 
 ---
+# 🖼️ Big Picture
+
+Before exploring individual Linux distributions, take a look at this simplified overview of the Linux ecosystem.
+
+> 📁 Diagram available in: `assets/diagrams/linux-distributions-overview.md`
 
 # 🌍 Popular Linux Distributions
 
