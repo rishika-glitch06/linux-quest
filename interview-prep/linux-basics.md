@@ -239,3 +239,61 @@ Different distributions are created to meet different user needs such as desktop
 **Answer:**
 
 Ubuntu and Debian are among the most commonly used distributions in cloud computing and DevOps environments because of their stability and extensive package support.
+
+---
+
+# 📖 Lesson 06 - GUI vs CLI
+
+## Q1. What is GUI?
+
+**Answer:**
+
+GUI (Graphical User Interface) is a way of interacting with a computer using graphical elements like windows, icons, buttons, and menus instead of typing commands.
+
+---
+
+## Q2. What is CLI?
+
+**Answer:**
+
+CLI (Command Line Interface) is a text-based interface where users interact with the operating system by typing commands in a terminal.
+
+---
+
+## Q3. What are the advantages of CLI over GUI?
+
+**Answer:**
+
+- Faster for experienced users
+- Uses fewer system resources
+- Easy to automate tasks
+- Ideal for remote server management
+- Preferred in DevOps and System Administration
+
+---
+
+## Q4. What are the advantages of GUI?
+
+**Answer:**
+
+- Easy to learn
+- User-friendly
+- Visual interaction
+- Suitable for beginners
+- Great for everyday desktop use
+
+---
+
+## Q5. Which interface is commonly used on Linux servers?
+
+**Answer:**
+
+CLI is commonly used because it is lightweight, efficient, and allows remote management through SSH.
+
+---
+
+## Q6. Should a Linux professional know both GUI and CLI?
+
+**Answer:**
+
+Yes. A Linux professional should be comfortable with both. GUI is useful for everyday tasks, while CLI is essential for administration, automation, troubleshooting, and server management.
