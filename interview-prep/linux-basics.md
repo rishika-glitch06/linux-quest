@@ -182,3 +182,60 @@ Linux uses a **Monolithic Kernel**, where most operating system services run ins
 User Space is where applications run with limited permissions.
 
 Kernel Space is where the Kernel runs with full access to system hardware and resources.
+---
+
+# 📖 Lesson 05 - Linux Distributions
+
+## Q1. What is a Linux Distribution?
+
+**Answer:**
+
+A Linux Distribution (or Linux Distro) is a complete operating system built using the Linux Kernel along with system utilities, software packages, package managers, and other tools.
+
+---
+
+## Q2. What is the difference between the Linux Kernel and a Linux Distribution?
+
+**Answer:**
+
+The Linux Kernel is the core component that manages hardware and system resources.
+
+A Linux Distribution is a complete operating system that includes the Linux Kernel along with applications, utilities, package managers, and other software.
+
+---
+
+## Q3. Name some popular Linux distributions.
+
+**Answer:**
+
+- Ubuntu
+- Debian
+- Fedora
+- Arch Linux
+- Linux Mint
+- Kali Linux
+- Red Hat Enterprise Linux (RHEL)
+
+---
+
+## Q4. Which Linux distribution is best for beginners?
+
+**Answer:**
+
+Ubuntu and Linux Mint are considered the best choices for beginners because they are user-friendly, stable, and have strong community support.
+
+---
+
+## Q5. Why are there so many Linux distributions?
+
+**Answer:**
+
+Different distributions are created to meet different user needs such as desktop usage, software development, cloud computing, cybersecurity, enterprise environments, and education.
+
+---
+
+## Q6. Which Linux distribution is widely used in cloud and DevOps?
+
+**Answer:**
+
+Ubuntu and Debian are among the most commonly used distributions in cloud computing and DevOps environments because of their stability and extensive package support.
