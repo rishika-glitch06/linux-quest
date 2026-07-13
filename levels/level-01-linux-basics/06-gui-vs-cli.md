@@ -187,3 +187,67 @@ Believing you must choose either GUI or CLI.
 ✅ Reality:
 
 Most Linux users use both depending on the task.
+---
+
+# 🧩 Fun Fact
+
+Did you know?
+
+Many of the world's fastest supercomputers and cloud servers are managed almost entirely through the command line. Even without a graphical interface, administrators can control thousands of machines efficiently using terminal commands.
+
+---
+
+# 📝 Quick Recap
+
+Today you learned that:
+
+- ✅ GUI stands for Graphical User Interface.
+- ✅ CLI stands for Command Line Interface.
+- ✅ Both interact with the same Linux operating system.
+- ✅ GUI is easier for beginners.
+- ✅ CLI is faster, lightweight, and preferred by professionals.
+- ✅ Most Linux servers are managed using the command line.
+
+---
+
+# 🎯 Mini Challenge
+
+Without searching online, answer these questions:
+
+1. What does GUI stand for?
+2. What does CLI stand for?
+3. Name three advantages of CLI.
+4. Which interface is commonly used on Linux servers?
+5. If you had to manage 100 remote servers, would you choose GUI or CLI? Why?
+
+---
+
+# ☕ Coffee Break
+
+At the beginning of this lesson, the terminal might have looked intimidating.
+
+Now you know why professionals rely on it every day.
+
+Don't worry if you don't remember every command—we'll start using the terminal in the next lessons, and with practice it will become second nature.
+
+---
+
+# 🧭 What's Next?
+
+Great job! 🎉
+
+You've completed another important Linux concept.
+
+Next up:
+
+# ⌨️ Lesson 07 – Terminal Basics
+
+We'll learn:
+
+- What is a Terminal?
+- Different Linux shells
+- Opening the terminal
+- Understanding the terminal prompt
+- Running your first Linux commands
+
+This is where your real Linux journey begins.
