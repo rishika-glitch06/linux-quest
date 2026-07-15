@@ -297,3 +297,68 @@ CLI is commonly used because it is lightweight, efficient, and allows remote man
 **Answer:**
 
 Yes. A Linux professional should be comfortable with both. GUI is useful for everyday tasks, while CLI is essential for administration, automation, troubleshooting, and server management.
+---
+
+# 📖 Lesson 07 - Terminal Basics
+
+## Q1. What is a Terminal?
+
+**Answer:**
+
+A Terminal is an application that allows users to interact with the Linux operating system by typing commands. It provides a text-based interface to communicate with the system.
+
+---
+
+## Q2. What is the difference between a Terminal and a Shell?
+
+**Answer:**
+
+A Terminal is the application where users type commands.
+
+A Shell is the program that interprets and executes those commands.
+
+---
+
+## Q3. Name some popular Linux shells.
+
+**Answer:**
+
+- Bash
+- Zsh
+- Fish
+- Ksh
+- Tcsh
+
+---
+
+## Q4. What does the `$` symbol in the terminal prompt indicate?
+
+**Answer:**
+
+The `$` symbol indicates that the current user is a normal (non-root) user.
+
+The `#` symbol usually indicates the root user.
+
+---
+
+## Q5. Which shell is the default on most Linux distributions?
+
+**Answer:**
+
+Bash (Bourne Again Shell) is the default shell on many Linux distributions.
+
+---
+
+## Q6. Why do Linux professionals prefer using the terminal?
+
+**Answer:**
+
+The terminal is faster, consumes fewer system resources, allows automation through scripting, and is ideal for managing remote servers and performing administrative tasks.
+
+---
+
+## Q7. What is a terminal prompt?
+
+**Answer:**
+
+The terminal prompt is the text displayed before the cursor (for example, `rishika@ubuntu:~$`). It typically shows the current user, hostname, current directory, and user privilege level.
