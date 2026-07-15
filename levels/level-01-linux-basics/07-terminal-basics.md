@@ -134,6 +134,18 @@ If you ever see:
 It usually means you're working as the **root user**.
 
 ---
+# 🖼️ Big Picture
+
+Every command you type follows a simple journey before it reaches the hardware.
+
+> 📁 Diagram available in: `assets/diagrams/terminal-basics-overview.md`
+
+Think of it like this:
+
+- You type a command in the **Terminal**
+- The **Shell** understands and processes it
+- The **Linux Kernel** performs the requested operation
+- The hardware executes the task
 
 # 🚀 Your First Linux Commands
 
@@ -270,6 +282,27 @@ date
 ```text
 Mon Jul 20 10:35:12 IST 2026
 ```
+---
+
+# 🧪 Try It Yourself
+
+Open your terminal and run:
+
+```bash
+pwd
+whoami
+hostname
+date
+```
+
+### ✅ Expected Output
+
+- `pwd` → Shows your current directory
+- `whoami` → Displays your current username
+- `hostname` → Displays your computer's name
+- `date` → Shows the current date and time
+
+💡 Don't worry if your output looks different from the examples. Every system has its own username, hostname, and current time.
 
 ### 🌍 Real World Use
 
