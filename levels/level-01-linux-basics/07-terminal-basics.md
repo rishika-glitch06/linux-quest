@@ -307,3 +307,198 @@ date
 ### 🌍 Real World Use
 
 Useful while checking logs, troubleshooting, or scheduling tasks.
+---
+
+## 📌 Command
+
+```bash
+clear
+```
+
+### 📖 What does it do?
+
+Clears the terminal screen.
+
+### 🧠 Syntax
+
+```bash
+clear
+```
+
+### 💻 Example
+
+```bash
+clear
+```
+
+### 🌍 Real World Use
+
+Useful when your terminal becomes cluttered and you want a clean workspace.
+
+---
+
+## 📌 Command
+
+```bash
+echo
+```
+
+### 📖 What does it do?
+
+Displays text or variables on the terminal.
+
+### 💻 Example
+
+```bash
+echo "Hello Linux!"
+```
+
+### 📤 Sample Output
+
+```text
+Hello Linux!
+```
+
+### 🌍 Real World Use
+
+Widely used in shell scripting to display messages or variable values.
+
+---
+
+## 📌 Command
+
+```bash
+history
+```
+
+### 📖 What does it do?
+
+Displays previously executed commands.
+
+### 💻 Example
+
+```bash
+history
+```
+
+### 🌍 Real World Use
+
+Useful when you want to rerun or review commands you've already executed.
+
+---
+
+## 📌 Command
+
+```bash
+uname
+```
+
+### 📖 What does it do?
+
+Displays information about your operating system.
+
+### 💻 Example
+
+```bash
+uname -a
+```
+
+### 🌍 Real World Use
+
+Helpful for checking kernel and system information while troubleshooting.
+
+---
+
+## 📌 Command
+
+```bash
+cal
+```
+
+### 📖 What does it do?
+
+Displays a calendar in the terminal.
+
+### 💻 Example
+
+```bash
+cal
+```
+
+> 💡 Note: On some modern Linux distributions, `cal` may not be installed by default. You can install it later if needed.
+
+---
+
+# 🧩 Fun Fact
+
+Many Linux users spend most of their day inside a terminal. Once you become comfortable with it, you'll often find it faster than using a graphical interface.
+
+---
+
+# 📝 Command Summary
+
+| Command | Purpose |
+|---------|---------|
+| pwd | Print current directory |
+| whoami | Show current user |
+| hostname | Show computer name |
+| date | Show current date & time |
+| clear | Clear terminal screen |
+| echo | Display text |
+| history | Show command history |
+| uname | Show system information |
+| cal | Display calendar |
+
+---
+
+# 📝 Quick Recap
+
+Today you learned:
+
+- ✅ What a Terminal is
+- ✅ Difference between Terminal and Shell
+- ✅ Popular Linux shells
+- ✅ Understanding the terminal prompt
+- ✅ Your first Linux commands
+
+---
+
+# 🎯 Mini Challenge
+
+Open your terminal and try running these commands:
+
+```bash
+pwd
+whoami
+hostname
+date
+echo "Linux Quest"
+history
+uname -a
+```
+
+Can you identify what each command does without looking back?
+
+---
+
+# ☕ Coffee Break
+
+Congratulations! 🎉
+
+You've officially started interacting with Linux through the terminal. Every Linux professional starts here.
+
+---
+
+# 🧭 What's Next?
+
+## 📂 Lesson 08 – First Linux Commands
+
+We'll learn:
+
+- ls
+- cd
+- mkdir
+- touch
+- rmdir
+
+These are the commands you'll use almost every day.
