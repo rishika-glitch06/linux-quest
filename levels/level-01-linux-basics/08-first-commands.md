@@ -405,3 +405,100 @@ You've just created a project folder and your first file inside it.
 | mkdir | Create a folder |
 | touch | Create a file |
 | rmdir | Remove an empty folder |
+---
+
+# 📌 Command
+
+```bash
+rm
+```
+
+## 📖 What is it?
+
+Removes files or directories.
+
+## ⚙️ Syntax
+
+```bash
+rm filename
+```
+
+To remove a directory and its contents:
+
+```bash
+rm -r directory_name
+```
+
+## 💻 Example
+
+```bash
+rm notes.txt
+```
+
+## 🌍 Real World Use
+
+Used to delete unwanted files and folders.
+
+## ⚠️ Common Mistake
+
+Be careful! Deleted files cannot be recovered easily.
+
+---
+
+# 🔥 Interview Tip
+
+**Question:** What is the difference between `rmdir` and `rm -r`?
+
+**Answer:**
+
+- `rmdir` deletes only empty directories.
+- `rm -r` deletes directories along with all their contents.
+
+---
+
+# 📝 Quick Recap
+
+Today you learned:
+
+- ✅ `pwd`
+- ✅ `ls`
+- ✅ `cd`
+- ✅ `mkdir`
+- ✅ `touch`
+- ✅ `rmdir`
+- ✅ `rm`
+
+---
+
+# 🎯 Mini Challenge
+
+Without looking at the notes, try to:
+
+1. Create a folder named `Practice`
+2. Enter the folder
+3. Create two files
+4. List the files
+5. Return to the previous directory
+6. Delete the folder
+
+---
+
+# ☕ Coffee Break
+
+Congratulations! 🎉
+
+You can now navigate the Linux file system, create folders, create files, and remove them. These commands form the foundation of almost every Linux workflow.
+
+---
+
+# 🧭 What's Next?
+
+## 📂 Lesson 09 – Linux File System Navigation
+
+We'll explore:
+
+- Absolute vs Relative Paths
+- Root Directory (`/`)
+- Home Directory (`~`)
+- Important Linux Directories
+- File System Hierarchy Standard (FHS)
