@@ -314,3 +314,56 @@ Knowing where everything belongs makes working in Linux much easier.
 - `~` = Your Home Directory
 
 These are **not the same**.
+---
+
+# 📝 Quick Recap
+
+Today you learned:
+
+- ✅ Linux follows a tree-like file system.
+- ✅ `/` is the Root Directory.
+- ✅ `~` represents the current user's Home Directory.
+- ✅ Absolute paths always start from `/`.
+- ✅ Relative paths depend on your current location.
+- ✅ Important directories like `/home`, `/etc`, `/usr`, `/var`, and `/tmp` each have specific purposes.
+
+---
+
+# 🎯 Mini Challenge
+
+Without looking at the notes:
+
+1. Navigate to the root directory.
+2. Move to your home directory.
+3. Print your current directory.
+4. List the contents of `/etc`.
+5. Return to your home directory.
+
+---
+
+# ☕ Coffee Break
+
+You've now learned how Linux organizes everything under a single directory tree. Understanding the file system is one of the biggest milestones for every Linux learner.
+
+---
+
+# 💡 Fun Fact
+
+Unlike Windows, Linux treats almost everything as a file—including hardware devices, terminals, and many system resources.
+
+---
+
+# 🧭 What's Next?
+
+## 📂 Lesson 10 – Working with Files & Directories
+
+We'll learn:
+
+- `cp`
+- `mv`
+- `rm`
+- `find`
+- `locate`
+- `file`
+
+By the end of the next lesson, you'll be able to manage files confidently from the terminal.
