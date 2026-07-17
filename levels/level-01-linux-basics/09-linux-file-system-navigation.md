@@ -190,3 +190,107 @@ then Linux understands that you want to go to:
 # 💡 Did You Know?
 
 In Linux, almost everything is treated as a file—including hard disks, USB drives, keyboards, terminals, and even running processes.
+---
+
+# 🖼️ Big Picture
+
+The Linux file system is organized like a tree. Every directory has a specific purpose, helping keep the operating system organized and efficient.
+
+> 📁 Diagram available in: `assets/diagrams/linux-file-system-tree.md`
+
+---
+
+# 📂 Important Linux Directories
+
+## 📁 `/bin`
+
+Stores essential command-line programs such as:
+
+```bash
+ls
+cp
+mv
+rm
+cat
+```
+
+These commands are required for the system to function properly.
+
+---
+
+## 🏠 `/home`
+
+Contains personal folders for each user.
+
+Example:
+
+```text
+/home/rishika
+```
+
+This is where documents, downloads, projects, and personal files are stored.
+
+---
+
+## ⚙️ `/etc`
+
+Contains system configuration files.
+
+Examples include:
+
+- Network settings
+- User account configuration
+- Software configuration
+
+System administrators frequently work in this directory.
+
+---
+
+## 📦 `/usr`
+
+Contains user applications, libraries, documentation, and shared resources.
+
+Most installed software is located here.
+
+---
+
+## 📊 `/var`
+
+Stores files that change frequently, such as:
+
+- System logs
+- Cache files
+- Mail queues
+- Databases
+
+---
+
+## 🗂️ `/tmp`
+
+Stores temporary files created by applications and the operating system.
+
+These files are usually deleted automatically after a reboot.
+
+---
+
+# 📚 File System Hierarchy Standard (FHS)
+
+Linux follows a standard directory structure known as the **File System Hierarchy Standard (FHS)**.
+
+This standard ensures that Linux distributions organize files consistently, making it easier for users and administrators to navigate different systems.
+
+---
+
+# 🌍 Real World Example
+
+Imagine Linux as a large office building:
+
+- 🏢 `/` → The building entrance
+- 🏠 `/home` → Employees' personal cabins
+- ⚙️ `/etc` → Administration office
+- 📦 `/usr` → Storage room for tools
+- 📊 `/var` → Record room with logs
+- 🗂️ `/tmp` → Temporary work desk
+- 🛠️ `/bin` → Toolbox containing essential tools
+
+Knowing where everything belongs makes working in Linux much easier.
