@@ -362,3 +362,61 @@ The terminal is faster, consumes fewer system resources, allows automation throu
 **Answer:**
 
 The terminal prompt is the text displayed before the cursor (for example, `rishika@ubuntu:~$`). It typically shows the current user, hostname, current directory, and user privilege level.
+---
+
+# 📖 Lesson 08 - First Linux Commands
+
+## Q1. What does the `ls` command do?
+
+**Answer:**
+
+The `ls` command lists all files and directories in the current working directory.
+
+---
+
+## Q2. What is the purpose of the `pwd` command?
+
+**Answer:**
+
+It displays the absolute path of the current working directory.
+
+---
+
+## Q3. What is the difference between `cd` and `pwd`?
+
+**Answer:**
+
+- `cd` changes the current directory.
+- `pwd` displays the current directory.
+
+---
+
+## Q4. What does the `mkdir` command do?
+
+**Answer:**
+
+It creates a new directory (folder).
+
+---
+
+## Q5. What does the `touch` command do?
+
+**Answer:**
+
+It creates a new empty file. If the file already exists, it updates its timestamp.
+
+---
+
+## Q6. When should you use `rmdir` instead of `rm -r`?
+
+**Answer:**
+
+Use `rmdir` only for empty directories. Use `rm -r` when the directory contains files or subdirectories.
+
+---
+
+## Q7. Which Linux commands are used daily by almost every Linux user?
+
+**Answer:**
+
+`pwd`, `ls`, `cd`, `mkdir`, `touch`, `rm`, `rmdir`

@@ -393,3 +393,15 @@ ls
 ```
 
 You've just created a project folder and your first file inside it.
+---
+
+# 📋 Command Summary
+
+| Command | Purpose |
+|----------|----------|
+| pwd | Show current directory |
+| ls | List files and folders |
+| cd | Change directory |
+| mkdir | Create a folder |
+| touch | Create a file |
+| rmdir | Remove an empty folder |
