@@ -294,3 +294,23 @@ Imagine Linux as a large office building:
 - 🛠️ `/bin` → Toolbox containing essential tools
 
 Knowing where everything belongs makes working in Linux much easier.
+---
+
+# 📋 Directory Summary
+
+| Directory | Purpose |
+|-----------|---------|
+| `/` | Root directory |
+| `/home` | User files |
+| `/bin` | Essential commands |
+| `/etc` | Configuration files |
+| `/usr` | Applications & libraries |
+| `/var` | Logs & variable data |
+| `/tmp` | Temporary files |
+
+> 🧠 **Remember This**
+
+- `/` = Root Directory
+- `~` = Your Home Directory
+
+These are **not the same**.

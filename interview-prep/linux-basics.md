@@ -420,3 +420,61 @@ Use `rmdir` only for empty directories. Use `rm -r` when the directory contains 
 **Answer:**
 
 `pwd`, `ls`, `cd`, `mkdir`, `touch`, `rm`, `rmdir`
+---
+
+# 📖 Lesson 09 - Linux File System Navigation
+
+## Q1. What is the Root Directory in Linux?
+
+**Answer:**
+
+The Root Directory (`/`) is the top-most directory in Linux. Every file and directory starts from this location.
+
+---
+
+## Q2. What is the Home Directory?
+
+**Answer:**
+
+The Home Directory is the personal workspace of a user. It is usually located at `/home/username` and can be represented by the `~` symbol.
+
+---
+
+## Q3. What is the difference between an Absolute Path and a Relative Path?
+
+**Answer:**
+
+- **Absolute Path** starts from the Root Directory (`/`) and always points to the same location.
+- **Relative Path** starts from the current working directory and depends on your current location.
+
+---
+
+## Q4. What does `/etc` contain?
+
+**Answer:**
+
+It contains system configuration files used by the operating system and installed applications.
+
+---
+
+## Q5. What is stored inside `/var`?
+
+**Answer:**
+
+`/var` stores frequently changing data such as logs, cache files, mail queues, and databases.
+
+---
+
+## Q6. What is the purpose of `/tmp`?
+
+**Answer:**
+
+`/tmp` stores temporary files created by programs. These files are often deleted automatically after a reboot.
+
+---
+
+## Q7. What is the File System Hierarchy Standard (FHS)?
+
+**Answer:**
+
+FHS is a standard that defines how directories and files should be organized on Linux systems, making different distributions consistent and easier to navigate.
