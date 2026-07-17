@@ -253,3 +253,143 @@ pwd
 # 🧩 Fun Fact
 
 Every Linux user—from beginners to Linux kernel developers—uses `ls`, `pwd`, and `cd` almost every day.
+---
+
+# 📌 Command
+
+```bash
+mkdir
+```
+
+## 📖 What is it?
+
+Creates a new directory (folder).
+
+## ⚙️ Syntax
+
+```bash
+mkdir directory_name
+```
+
+## 💻 Example
+
+```bash
+mkdir LinuxQuest
+```
+
+## 📤 Sample Output
+
+A new folder named `LinuxQuest` is created.
+
+## 🌍 Real World Use
+
+Used to organize projects and create new working directories.
+
+## ⚠️ Common Mistake
+
+Trying to create a folder that already exists.
+
+## 💡 Pro Tip
+
+Create multiple folders at once:
+
+```bash
+mkdir project docs images
+```
+
+## 🧪 Try It Yourself
+
+```bash
+mkdir practice
+ls
+```
+
+---
+
+# 📌 Command
+
+```bash
+touch
+```
+
+## 📖 What is it?
+
+Creates a new empty file.
+
+## ⚙️ Syntax
+
+```bash
+touch filename
+```
+
+## 💻 Example
+
+```bash
+touch notes.txt
+```
+
+## 📤 Sample Output
+
+Creates an empty file named `notes.txt`.
+
+## 🌍 Real World Use
+
+Useful for creating configuration files, scripts, and notes.
+
+## ⚠️ Common Mistake
+
+Forgetting the file extension when it's needed.
+
+## 🧪 Try It Yourself
+
+```bash
+touch file1.txt
+ls
+```
+
+---
+
+# 📌 Command
+
+```bash
+rmdir
+```
+
+## 📖 What is it?
+
+Deletes an empty directory.
+
+## ⚙️ Syntax
+
+```bash
+rmdir directory_name
+```
+
+## 💻 Example
+
+```bash
+rmdir practice
+```
+
+## 🌍 Real World Use
+
+Used to remove directories that no longer contain files.
+
+## ⚠️ Common Mistake
+
+`rmdir` works **only** on empty directories.
+
+---
+
+# 🧩 Real World Scenario
+
+Imagine you're starting a new project.
+
+```bash
+mkdir LinuxProject
+cd LinuxProject
+touch README.md
+ls
+```
+
+You've just created a project folder and your first file inside it.
