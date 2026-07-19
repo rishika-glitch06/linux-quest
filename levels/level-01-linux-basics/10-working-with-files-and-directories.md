@@ -201,3 +201,174 @@ MyProject/
 ```
 
 The original `app.py` remains in the current directory, while `backup.py` is moved into the `MyProject` folder.
+---
+
+# 📌 Command
+
+```bash
+rm
+```
+
+## 📖 What is it?
+
+The `rm` command is used to delete files and directories.
+
+## ⚙️ Syntax
+
+```bash
+rm filename
+```
+
+To remove a directory and all its contents:
+
+```bash
+rm -r directory_name
+```
+
+## 💻 Example
+
+```bash
+rm notes.txt
+```
+
+## 🌍 Real World Use
+
+- Removing unnecessary files
+- Cleaning project folders
+- Deleting temporary files
+
+## ⚠️ Common Mistake
+
+`rm` permanently deletes files. There is no Recycle Bin in the terminal.
+
+## 💡 Pro Tip
+
+Use:
+
+```bash
+rm -i filename
+```
+
+to ask for confirmation before deleting.
+
+## 🧪 Try It Yourself
+
+```bash
+touch temp.txt
+rm temp.txt
+```
+
+---
+
+# 📌 Command
+
+```bash
+find
+```
+
+## 📖 What is it?
+
+The `find` command searches for files and directories.
+
+## ⚙️ Syntax
+
+```bash
+find location -name filename
+```
+
+## 💻 Example
+
+```bash
+find . -name "README.md"
+```
+
+## 📤 Sample Output
+
+```text
+./README.md
+```
+
+## 🌍 Real World Use
+
+Finding configuration files, source code, logs, or documents in large projects.
+
+## ⚠️ Common Mistake
+
+Using the wrong search location.
+
+`.` means **current directory**.
+
+## 💡 Pro Tip
+
+Search only for Python files:
+
+```bash
+find . -name "*.py"
+```
+
+---
+
+# 📌 Command
+
+```bash
+file
+```
+
+## 📖 What is it?
+
+The `file` command identifies the type of a file.
+
+## ⚙️ Syntax
+
+```bash
+file filename
+```
+
+## 💻 Example
+
+```bash
+file notes.txt
+```
+
+## 📤 Sample Output
+
+```text
+notes.txt: ASCII text
+```
+
+## 🌍 Real World Use
+
+Useful when a file has no extension or you want to verify its actual type.
+
+## 🧪 Try It Yourself
+
+```bash
+touch demo.txt
+file demo.txt
+```
+
+---
+
+# 🔥 Interview Tip
+
+### Question
+
+What is the difference between `rm` and `rmdir`?
+
+### Answer
+
+- `rm` removes files and can also remove directories using `rm -r`.
+- `rmdir` removes **only empty directories**.
+
+---
+
+# 🌍 Real World Scenario
+
+Suppose your project contains old log files:
+
+```bash
+find . -name "*.log"
+rm old.log
+```
+
+You first locate the unwanted log file and then delete it safely.
