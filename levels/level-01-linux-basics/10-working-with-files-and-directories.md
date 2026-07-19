@@ -391,3 +391,59 @@ You first locate the unwanted log file and then delete it safely.
 - `rm` → Delete
 - `find` → Search
 - `file` → Identify file type
+
+---
+
+# 📝 Quick Recap
+
+Today you learned:
+
+- ✅ Copy files using `cp`
+- ✅ Move and rename files using `mv`
+- ✅ Delete files using `rm`
+- ✅ Search files using `find`
+- ✅ Identify file types using `file`
+
+---
+
+# 🎯 Mini Challenge
+
+Without looking at the notes:
+
+1. Create a folder named `Practice`.
+2. Create a file named `demo.txt`.
+3. Copy it as `demo_backup.txt`.
+4. Move the backup into another folder named `Backup`.
+5. Search for all `.txt` files.
+6. Check the file type of `demo.txt`.
+7. Delete both files.
+
+---
+
+# ☕ Coffee Break
+
+Congratulations! 🎉
+
+You can now confidently manage files and directories using the Linux terminal. These are the commands you'll use throughout your Linux journey.
+
+---
+
+# 💡 Fun Fact
+
+Many developers rarely use a graphical file manager—they perform most file operations directly from the terminal because it's faster and easier to automate.
+
+---
+
+# 🧭 What's Next?
+
+## 🏆 Level 01 Complete!
+
+Before moving to Level 02, we'll create:
+
+- 📋 Level 01 Cheat Sheet
+- 📚 Complete Revision Notes
+- 💼 50+ Interview Questions
+- 🧪 Labs Index
+- 🏅 Level 01 Completion Guide
+
+This will make Linux Quest feel like a complete beginner course rather than just a collection of notes.
