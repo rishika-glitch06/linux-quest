@@ -372,3 +372,22 @@ rm old.log
 ```
 
 You first locate the unwanted log file and then delete it safely.
+---
+
+# 📋 Command Summary
+
+| Command | Purpose |
+|----------|----------|
+| `cp` | Copy files or directories |
+| `mv` | Move or rename files |
+| `rm` | Remove files |
+| `find` | Search for files |
+| `file` | Identify file type |
+
+> 🧠 **Remember This**
+
+- `cp` → Copy
+- `mv` → Move or Rename
+- `rm` → Delete
+- `find` → Search
+- `file` → Identify file type

@@ -478,3 +478,62 @@ It contains system configuration files used by the operating system and installe
 **Answer:**
 
 FHS is a standard that defines how directories and files should be organized on Linux systems, making different distributions consistent and easier to navigate.
+---
+
+# 📖 Lesson 10 - Working with Files & Directories
+
+## Q1. What does the `cp` command do?
+
+**Answer:**
+
+The `cp` command copies files or directories from one location to another while keeping the original intact.
+
+---
+
+## Q2. What is the difference between `cp` and `mv`?
+
+**Answer:**
+
+- `cp` creates a copy of a file or directory.
+- `mv` moves a file or directory or renames it.
+
+---
+
+## Q3. What is the purpose of the `rm` command?
+
+**Answer:**
+
+The `rm` command permanently removes files. With the `-r` option, it can also remove directories and their contents.
+
+---
+
+## Q4. What is the `find` command used for?
+
+**Answer:**
+
+The `find` command searches for files and directories based on criteria such as name, type, or location.
+
+---
+
+## Q5. What does the `file` command do?
+
+**Answer:**
+
+The `file` command identifies the type of a file, even if it has no extension.
+
+---
+
+## Q6. What is the difference between `rm` and `rmdir`?
+
+**Answer:**
+
+- `rm` removes files and directories (using `-r`).
+- `rmdir` removes only empty directories.
+
+---
+
+## Q7. Which command would you use to rename a file?
+
+**Answer:**
+
+The `mv` command is used to rename files and directories.
