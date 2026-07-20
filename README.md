@@ -22,6 +22,7 @@ Whether you're taking your first step into Linux or revising concepts before an 
 
 ---
 
+
 ## 🚀 What You'll Find Here
 
 - 📖 Beginner-friendly explanations
@@ -65,3 +66,25 @@ So if you're learning Linux too...
 ---
 
 > *"The terminal looks scary only until you type your first command."* 🚀
+
+---
+
+# 📊 Current Progress
+
+## ✅ Completed
+
+- 🟢 Level 01 – Linux Basics
+
+### Lessons Completed
+
+- 10 Lessons
+- 3 Hands-on Labs
+- Revision Guide
+- Cheat Sheet
+- Interview Guide
+
+### Commands Learned
+
+`pwd` `ls` `cd` `mkdir` `touch` `cp` `mv` `rm` `rmdir` `find` `file` `history` `echo` `clear` `hostname` `date` `whoami` `uname`
+
+---
