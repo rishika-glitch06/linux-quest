@@ -18,7 +18,7 @@ This level builds upon the foundational concepts learned in **Level 01 — Linux
 - 🔗 Hard Links & Symbolic Links
 - 🔍 Finding Files & Directories
 - 📊 Disk Usage & Storage
-- 📦 Archiving Files
+- 📦 Archiving with tar
 - 🗜️ File Compression
 - 🎯 Wildcards & Pattern Matching
 - 🛠️ Advanced File Management
@@ -30,7 +30,7 @@ This level builds upon the foundational concepts learned in **Level 01 — Linux
 | # | Lesson | Status |
 |---|--------|--------|
 | 01 | Linux File System Hierarchy | 🟢 Complete |
-| 02 | Important Linux Directories | 🔴 Not Started |
+| 02 | Important Linux Directories | 🟢 Complete |
 | 03 | Absolute & Relative Paths | 🔴 Not Started |
 | 04 | Hard Links & Symbolic Links | 🔴 Not Started |
 | 05 | Finding Files & Directories | 🔴 Not Started |
@@ -98,24 +98,18 @@ By completing Level 02, you will be able to:
 ## 🏆 Level Status
 
 ```text
-██░░░░░░░░░░░░░░░░░░ 10%
+████░░░░░░░░░░░░░░░░ 20%
 
 🟡 LEVEL 02 — IN PROGRESS
+📚 Completed Lessons
+✅ Lesson 01 — Linux File System Hierarchy
+✅ Lesson 02 — Important Linux Directories
+🚀 Previous Level
 
-## 🚀 Previous Level
+⬅️ Level 01 — Linux Basics
 
-⬅️ [Level 01 — Linux Basics](../level-01-linux-basics/README.md)
+🧭 Linux Quest Navigation
 
----
+⬅️ Back to Linux Quest
 
-## 🧭 Linux Quest Navigation
-
-⬅️ [Back to Linux Quest](../../README.md)
-
-➡️ **Next: Lesson 02 — Important Linux Directories**
-
----
-
-> 💡 The better you understand the file system, the better you understand Linux itself.
-
-🐧 **The Quest Continues...**
+➡️
