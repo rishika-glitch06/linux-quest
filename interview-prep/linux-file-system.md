@@ -753,3 +753,471 @@ cat /proc/meminfo
 > 🐧 **Linux Quest — Level 02 Interview Preparation**
 
 > *Understand the system. Answer with confidence. Keep learning.*
+
+---
+
+# 📂 Lesson 02 — Important Linux Directories
+
+## Q41. Which directory contains system-wide configuration files?
+
+**Answer:**
+
+The `/etc` directory contains system-wide configuration files.
+
+Examples include:
+
+```text
+/etc/passwd
+/etc/hosts
+/etc/hostname
+```
+
+---
+
+## Q42. Where are normal users' home directories stored?
+
+**Answer:**
+
+Normal users' home directories are generally stored under:
+
+```text
+/home
+```
+
+Example:
+
+```text
+/home/rishika
+```
+
+---
+
+## Q43. What is `/root`?
+
+**Answer:**
+
+`/root` is the home directory of the root user.
+
+It should not be confused with `/`, which is the root of the entire file system.
+
+```text
+/      → Root of entire file system
+/root  → Root user's home directory
+```
+
+---
+
+## Q44. What is the purpose of `/bin`?
+
+**Answer:**
+
+`/bin` traditionally contains essential executable commands used by users and the system.
+
+Examples include:
+
+```text
+ls
+cp
+mv
+cat
+```
+
+On modern Linux distributions, `/bin` may be a symbolic link to `/usr/bin`.
+
+---
+
+## Q45. What is the purpose of `/sbin`?
+
+**Answer:**
+
+`/sbin` traditionally contains system administration commands used for system management and maintenance.
+
+On systems using a merged `/usr` layout, `/sbin` may be linked to `/usr/sbin`.
+
+---
+
+## Q46. What is stored in `/boot`?
+
+**Answer:**
+
+`/boot` contains files required for the Linux boot process.
+
+It may contain:
+
+- Linux Kernel
+- Bootloader-related files
+- Initial RAM filesystem
+
+---
+
+## Q47. What is the purpose of `/dev`?
+
+**Answer:**
+
+`/dev` contains special files representing devices and device interfaces.
+
+Examples:
+
+```text
+/dev/sda
+/dev/null
+/dev/tty
+```
+
+---
+
+## Q48. What is the purpose of `/lib`?
+
+**Answer:**
+
+`/lib` traditionally contains essential shared libraries required by system programs and commands.
+
+On many modern distributions, `/lib` may be a symbolic link under the merged `/usr` layout.
+
+---
+
+## Q49. What is `/media` used for?
+
+**Answer:**
+
+`/media` is commonly used as a mount point for removable storage devices.
+
+Examples include:
+
+- USB drives
+- External drives
+- CDs/DVDs
+
+---
+
+## Q50. What is `/mnt` used for?
+
+**Answer:**
+
+`/mnt` is traditionally used as a temporary mount point for manually mounted file systems.
+
+Example:
+
+```text
+/mnt/backup
+/mnt/external-drive
+```
+
+---
+
+## Q51. What is the difference between `/media` and `/mnt`?
+
+**Answer:**
+
+`/media` is commonly used for removable devices that are automatically mounted by the system.
+
+`/mnt` is traditionally used as a temporary mount point for manually mounted file systems.
+
+---
+
+## Q52. What is `/opt`?
+
+**Answer:**
+
+`/opt` is used for optional or third-party software packages.
+
+Example:
+
+```text
+/opt/application
+```
+
+---
+
+## Q53. What is `/proc`?
+
+**Answer:**
+
+`/proc` is a virtual file system that provides information about running processes and the Linux kernel.
+
+Examples:
+
+```text
+/proc/cpuinfo
+/proc/meminfo
+```
+
+---
+
+## Q54. What is `/run`?
+
+**Answer:**
+
+`/run` contains temporary runtime information about the running system.
+
+It may contain information related to:
+
+- Running services
+- Processes
+- System state
+
+---
+
+## Q55. What is `/srv`?
+
+**Answer:**
+
+`/srv` contains data used by services provided by the system.
+
+For example, a web server may store service-related data in `/srv`.
+
+---
+
+## Q56. What is `/sys`?
+
+**Answer:**
+
+`/sys` is a virtual file system that provides information about:
+
+- Hardware
+- Devices
+- Device drivers
+- Linux kernel
+
+---
+
+## Q57. What is `/tmp`?
+
+**Answer:**
+
+`/tmp` is used for temporary files created by applications and users.
+
+Temporary files may be automatically removed depending on the system configuration.
+
+---
+
+## Q58. What is `/usr`?
+
+**Answer:**
+
+`/usr` contains user-space applications, libraries, documentation, and shared resources.
+
+Common directories include:
+
+```text
+/usr/bin
+/usr/lib
+/usr/sbin
+/usr/share
+```
+
+---
+
+## Q59. What is `/var`?
+
+**Answer:**
+
+`/var` contains variable data that changes during normal system operation.
+
+Examples include:
+
+- Logs
+- Cache
+- Spool data
+- Application data
+
+An important subdirectory is:
+
+```text
+/var/log
+```
+
+---
+
+# 🧩 Scenario-Based Questions — Important Directories
+
+## Q60. You need to modify a system configuration file. Where would you normally look?
+
+**Answer:**
+
+I would look in:
+
+```text
+/etc
+```
+
+because it contains system-wide configuration files.
+
+---
+
+## Q61. A user wants to access their personal documents. Where would you look?
+
+**Answer:**
+
+I would look under the user's home directory:
+
+```text
+/home/<username>
+```
+
+For example:
+
+```text
+/home/rishika/Documents
+```
+
+---
+
+## Q62. You need to investigate why a service failed. Which directory might contain useful information?
+
+**Answer:**
+
+I would check:
+
+```text
+/var/log
+```
+
+because system and application logs are commonly stored there.
+
+---
+
+## Q63. You need to inspect information about the CPU and memory. Which directory can provide this information?
+
+**Answer:**
+
+I would inspect:
+
+```text
+/proc
+```
+
+For example:
+
+```bash
+cat /proc/cpuinfo
+cat /proc/meminfo
+```
+
+---
+
+## Q64. You need to inspect hardware information exposed by the Linux kernel. Which directory would you check?
+
+**Answer:**
+
+I would check:
+
+```text
+/sys
+```
+
+---
+
+## Q65. You connect a USB device to a Linux system. Which directory might be used for its mount point?
+
+**Answer:**
+
+A removable device may be automatically mounted under:
+
+```text
+/media
+```
+
+The exact behavior depends on the desktop environment and system configuration.
+
+---
+
+## Q66. You manually mount a file system temporarily. Which directory would traditionally be used?
+
+**Answer:**
+
+The traditional location is:
+
+```text
+/mnt
+```
+
+---
+
+## Q67. You install a third-party application that is kept separate from the standard system software. Which directory might be suitable?
+
+**Answer:**
+
+The application could be installed under:
+
+```text
+/opt
+```
+
+---
+
+## Q68. Where would you look for files required during system startup?
+
+**Answer:**
+
+I would look in:
+
+```text
+/boot
+```
+
+---
+
+# ⚡ Rapid Fire — Lesson 02
+
+| Question | Answer |
+|---|---|
+| Configuration files? | `/etc` |
+| Normal users' home? | `/home` |
+| Root user's home? | `/root` |
+| Essential commands? | `/bin` |
+| System administration commands? | `/sbin` |
+| Boot files? | `/boot` |
+| Device interfaces? | `/dev` |
+| Essential libraries? | `/lib` |
+| Removable media? | `/media` |
+| Temporary mount point? | `/mnt` |
+| Optional software? | `/opt` |
+| Process information? | `/proc` |
+| Runtime information? | `/run` |
+| Service data? | `/srv` |
+| Hardware/kernel information? | `/sys` |
+| Temporary files? | `/tmp` |
+| User applications? | `/usr` |
+| Variable data/logs? | `/var` |
+
+---
+
+# 🎯 Level 02 Interview Checklist
+
+- [ ] Explain the Linux File System Hierarchy
+- [ ] Explain the Root Directory `/`
+- [ ] Differentiate `/` and `/root`
+- [ ] Explain `/etc`
+- [ ] Explain `/home`
+- [ ] Explain `/bin` and `/sbin`
+- [ ] Explain `/boot`
+- [ ] Explain `/dev`
+- [ ] Explain `/proc`
+- [ ] Explain `/sys`
+- [ ] Explain `/tmp`
+- [ ] Explain `/usr`
+- [ ] Explain `/var`
+- [ ] Differentiate `/media` and `/mnt`
+- [ ] Explain `/opt`
+- [ ] Explain `/run`
+- [ ] Explain `/srv`
+- [ ] Practice directory-based scenarios
+
+---
+
+## 🔗 Related Resources
+
+🖼️ [Linux File System Hierarchy Diagram](../assets/diagrams/linux-file-system-hierarchy.md)
+
+🖼️ [Important Linux Directories Diagram](../assets/diagrams/important-linux-directories.md)
+
+📖 [Level 02 — Linux File System](../levels/level-02-file-system/README.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02 Interview Preparation**
+
+> *Know the directories. Understand the system. Answer with confidence.*
