@@ -6,28 +6,68 @@
 
 ## 🎯 What Are We Studying?
 
-In this lesson, we will learn about the **Linux File System Hierarchy**.
+In this lesson, we will understand the **Linux File System Hierarchy** and how Linux organizes files and directories.
 
-Unlike Windows, where you may be familiar with drives such as `C:` and `D:`, Linux uses a single hierarchical file system that starts from the **Root Directory**, represented by `/`.
+Unlike Windows, where you may see drives such as `C:` and `D:`, Linux uses a single hierarchical file system that starts from the **Root Directory `/`**.
 
 We will learn:
 
-- What the Linux file system is
+- What a Linux file system is
 - What the Root Directory `/` means
-- How Linux organizes directories
+- How Linux organizes files and directories
 - The purpose of important directories
-- How to navigate the file system
-- Why understanding the file system is important
+- How to navigate the Linux file system
+- How to explore directories using terminal commands
 
 ---
 
 # 🧠 What Is a File System?
 
-A **file system** is the way an operating system organizes and stores files and directories on a storage device.
+A **file system** is a method used by an operating system to organize, store, and manage files and directories on a storage device.
 
-Linux follows a hierarchical structure.
+Linux follows a **hierarchical file system structure**.
 
-This means directories are organized like a tree.
+This structure looks like a tree:
+
+```text
+                         /
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+       /bin             /etc             /home
+        │                │                │
+    Commands        Configuration      User Files
+                         
+        ┌────────────────┼────────────────┐
+        │                │                │
+      /boot             /dev             /var
+        │                │                │
+   Boot Files         Devices            Logs
+
+        ┌────────────────┼────────────────┐
+        │                │                │
+       /tmp             /usr             /root
+        │                │                │
+ Temporary Files   Applications       Root User
+```
+
+The top of this hierarchy is the **Root Directory**:
+
+```text
+/
+```
+
+Everything in the Linux file system exists somewhere under `/`.
+
+---
+
+# 🌳 Understanding the Root Directory `/`
+
+The `/` directory is the **top-most directory** in Linux.
+
+All other directories and files exist below it.
+
+For example:
 
 ```text
 /
@@ -51,323 +91,142 @@ This means directories are organized like a tree.
 └── var
 ```
 
-The top of this hierarchy is the **Root Directory**:
+### ⚠️ Important
+
+Do not confuse:
+
+```text
+/       → Root of the entire file system
+
+/root   → Home directory of the root user
+```
+
+These are two completely different things.
+
+---
+
+# 📂 Important Directories
+
+The Linux file system contains many directories, each serving a specific purpose.
+
+| Directory | Purpose |
+|---|---|
+| `/` | Root of the entire file system |
+| `/bin` | Essential commands |
+| `/boot` | Boot-related files |
+| `/dev` | Device files |
+| `/etc` | System configuration |
+| `/home` | Normal users' home directories |
+| `/lib` | Essential system libraries |
+| `/media` | Removable media |
+| `/mnt` | Temporary mount point |
+| `/opt` | Optional software |
+| `/proc` | Process and kernel information |
+| `/root` | Root user's home directory |
+| `/run` | Runtime information |
+| `/sbin` | System administration commands |
+| `/srv` | Service data |
+| `/sys` | Kernel and hardware information |
+| `/tmp` | Temporary files |
+| `/usr` | User applications and resources |
+| `/var` | Variable data and logs |
+
+---
+
+# 🖼️ Linux File System Hierarchy Diagram
+
+```text
+                              /
+                              │
+       ┌──────────┬───────────┼───────────┬──────────┐
+       │          │           │           │          │
+     /bin       /boot       /dev        /etc       /home
+       │          │           │           │          │
+   Commands   Boot Files   Devices   Configuration  Users
+
+       ┌──────────┬───────────┼───────────┬──────────┐
+       │          │           │           │          │
+     /lib       /media      /mnt        /opt       /proc
+       │          │           │           │          │
+   Libraries  Removable   Mount Point  Software   Processes
+
+       ┌──────────┬───────────┼───────────┬──────────┐
+       │          │           │           │          │
+     /root      /run        /sbin       /sys       /tmp
+       │          │           │           │          │
+  Root User   Runtime     Admin Cmds   Hardware   Temporary
+
+                         ┌──────────┐
+                         │          │
+                        /usr       /var
+                         │          │
+                    Applications   Logs
+                    & Resources   & Data
+```
+
+### 💡 Key Idea
+
+The Linux file system is organized like a tree.
 
 ```text
 /
+│
+├── Directories
+│     │
+│     └── Subdirectories
+│            │
+│            └── Files
 ```
 
-Everything in the Linux file system exists somewhere under `/`.
-
----
-
-# 🌳 The Root Directory `/`
-
-The `/` directory is the **top-most directory** in Linux.
-
-It is not the same as the `/root` directory.
-
-```text
-/       → Root of the entire file system
-
-/root   → Home directory of the root user
-```
-
-Think of `/` as the **starting point of the entire Linux file system**.
-
----
-
-# 📁 Important Linux Directories
-
-## `/bin`
-
-Contains essential executable programs and commands used by the system.
-
-Examples:
-
-```text
-ls
-cp
-mv
-rm
-cat
-```
-
----
-
-## `/boot`
-
-Contains files required for the system to boot.
-
-It may contain:
-
-- Linux Kernel
-- Bootloader files
-- Initial RAM filesystem
-
----
-
-## `/dev`
-
-Contains special files that represent hardware devices.
-
-Examples:
-
-```text
-/dev/sda
-/dev/null
-/dev/tty
-```
-
-Linux treats many devices like files.
-
----
-
-## `/etc`
-
-Contains system-wide configuration files.
-
-Examples include configuration for:
-
-- Networking
-- Users
-- Services
-- System settings
-
-Example:
-
-```text
-/etc/passwd
-/etc/hosts
-```
-
----
-
-## `/home`
-
-Contains the personal directories of normal users.
-
-For example:
-
-```text
-/home/rishika
-/home/user1
-/home/user2
-```
-
-Your personal files, documents, downloads, and projects are generally stored inside your home directory.
-
----
-
-## `/lib`
-
-Contains essential shared libraries required by system programs and commands.
-
-Libraries provide reusable code that programs need to function.
-
----
-
-## `/media`
-
-Used as a mount point for removable media.
-
-For example:
-
-- USB drives
-- External storage
-- CDs/DVDs
-
----
-
-## `/mnt`
-
-Traditionally used as a temporary mount point for manually mounted file systems.
-
-For example:
-
-```text
-/mnt/backup
-/mnt/external-drive
-```
-
----
-
-## `/opt`
-
-Used for optional or third-party software packages.
-
-Applications that are installed outside the standard package management structure may be placed here.
-
----
-
-## `/proc`
-
-A virtual file system that provides information about running processes and the Linux kernel.
-
-For example:
-
-```text
-/proc/cpuinfo
-/proc/meminfo
-```
-
-The files here do not behave like normal files stored on your hard drive.
-
----
-
-## `/root`
-
-The home directory of the **root user**.
-
-Remember:
-
-```text
-/       → Root of the entire file system
-
-/root   → Home directory of the root user
-```
-
----
-
-## `/run`
-
-Stores temporary runtime information for processes and services since the system was booted.
-
----
-
-## `/sbin`
-
-Contains important system administration commands.
-
-These commands are generally used for system management and maintenance.
-
----
-
-## `/srv`
-
-Contains data used by services provided by the system.
-
-For example, a web server may store website-related data here.
-
----
-
-## `/sys`
-
-A virtual file system that provides information about devices, hardware, and the Linux kernel.
-
-It is mainly used by the kernel and system software.
-
----
-
-## `/tmp`
-
-Used for temporary files.
-
-Files stored here may be automatically deleted when the system restarts, depending on the Linux distribution and configuration.
-
----
-
-## `/usr`
-
-Contains many user-space applications, libraries, documentation, and other resources.
-
-Common directories include:
-
-```text
-/usr/bin
-/usr/lib
-/usr/share
-```
-
----
-
-## `/var`
-
-Contains variable data that changes frequently while the system is running.
-
-Examples include:
-
-- Log files
-- Cache files
-- Spool files
-
-A common location is:
-
-```text
-/var/log
-```
-
-which contains system and application logs.
-
----
-
-# 🗺️ Linux File System Overview
-
-```text
-                         /
-                         │
-       ┌─────────────────┼─────────────────┐
-       │                 │                 │
-      /bin              /etc             /home
-       │                 │                 │
-   Commands         Configuration      User Files
-       
-       ┌─────────────────┼─────────────────┐
-       │                 │                 │
-     /boot             /dev              /var
-       │                 │                 │
-   Boot Files         Devices            Logs
-
-       ┌─────────────────┼─────────────────┐
-       │                 │                 │
-      /tmp              /usr              /root
-       │                 │                 │
-  Temporary Files    Applications       Root User
-```
+The Root Directory `/` is the starting point of this entire structure.
 
 ---
 
 # 🌍 Real-World Example
 
-Imagine your Linux computer is like a **large office building**.
+Think of the Linux file system as a **large organization**.
 
 ```text
-/          → The entire building
+/           → Entire Organization
 
-/home      → Employees' personal offices
+/home       → Employees' Personal Offices
 
-/etc       → Building rules and configuration
+/etc        → Organization Rules & Configuration
 
-/bin       → Tools everyone can use
+/bin        → Commonly Used Tools
 
-/var/log   → Security and activity records
+/var/log    → Activity Records
 
-/tmp       → Temporary workspace
+/tmp        → Temporary Workspace
 
-/root      → Administrator's private office
+/root       → Administrator's Office
 
-/boot      → The system that starts the building
+/boot       → System Startup Department
 ```
 
-Just like an office building has different rooms for different purposes, Linux organizes its files and resources into different directories.
+Just like an organization separates responsibilities into different departments, Linux separates files and resources into different directories.
 
-This organization makes the system easier to manage and maintain.
+This makes the system easier to manage, maintain, and troubleshoot.
 
 ---
 
-# 💻 Exploring the File System
+# 💻 Exploring the File System Using Terminal
 
-Let's explore the Linux file system using the terminal.
+Now let's explore the Linux file system.
 
-## Step 1 — Go to the Root Directory
+---
+
+## 1️⃣ Go to the Root Directory
 
 ```bash
 cd /
 ```
 
+The `cd` command is used to change directories.
+
 ---
 
-## Step 2 — Check Your Location
+## 2️⃣ Check Your Current Location
 
 ```bash
 pwd
@@ -379,35 +238,45 @@ Expected output:
 /
 ```
 
+The `pwd` command means:
+
+```text
+Print Working Directory
+```
+
+It shows your current location in the file system.
+
 ---
 
-## Step 3 — List Root Directories
+## 3️⃣ List Files and Directories
 
 ```bash
 ls
 ```
 
-For a detailed listing:
+To get a detailed listing:
 
 ```bash
 ls -l
 ```
 
+The `ls` command displays the contents of a directory.
+
 ---
 
-## Step 4 — Explore the `/etc` Directory
+## 4️⃣ Navigate to `/etc`
 
 ```bash
 cd /etc
 ```
 
-Then:
+Check your current location:
 
 ```bash
 pwd
 ```
 
-You should see:
+Expected output:
 
 ```text
 /etc
@@ -415,7 +284,9 @@ You should see:
 
 ---
 
-## Step 5 — Return to Your Home Directory
+## 5️⃣ Return to Your Home Directory
+
+You can use:
 
 ```bash
 cd ~
@@ -431,45 +302,84 @@ cd
 
 # 🧪 Hands-on Practice
 
-Try the following commands:
+Try the following commands in your Linux terminal:
 
 ```bash
 cd /
+```
 
-pwd
-
-ls
-
-cd /etc
-
-pwd
-
-cd /home
-
-pwd
-
-cd ~
-
+```bash
 pwd
 ```
 
-### 🎯 Challenge
+```bash
+ls
+```
 
-Without looking at the lesson:
+```bash
+ls -l
+```
 
-1. Go to `/`.
-2. List its contents.
-3. Navigate to `/etc`.
-4. Return to your home directory.
-5. Confirm your current location using `pwd`.
+```bash
+cd /etc
+```
+
+```bash
+pwd
+```
+
+```bash
+cd /home
+```
+
+```bash
+pwd
+```
+
+```bash
+cd ~
+```
+
+```bash
+pwd
+```
+
+---
+
+# 🎯 Mini Challenge
+
+Try completing the following challenge without looking at the commands above.
+
+### Challenge:
+
+1. Go to the Root Directory `/`.
+2. Check your current location.
+3. List all files and directories.
+4. Navigate to `/etc`.
+5. Check your current location.
+6. Navigate to `/home`.
+7. Return to your home directory.
+8. Verify your current location.
+
+### Expected Command Flow
+
+```bash
+cd /
+pwd
+ls
+cd /etc
+pwd
+cd /home
+pwd
+cd ~
+pwd
+```
 
 ---
 
 # 🔍 Quick Check
 
-Answer these questions:
-
-### 1. What is the top-most directory in Linux?
+### Q1. What is the top-most directory in Linux?
 
 Answer:
 
@@ -477,7 +387,9 @@ Answer:
 /
 ```
 
-### 2. Where are normal users' home directories stored?
+---
+
+### Q2. Where are normal users' home directories stored?
 
 Answer:
 
@@ -485,7 +397,9 @@ Answer:
 /home
 ```
 
-### 3. Where are system configuration files stored?
+---
+
+### Q3. Where are system configuration files stored?
 
 Answer:
 
@@ -493,46 +407,58 @@ Answer:
 /etc
 ```
 
-### 4. Where are temporary files commonly stored?
+---
+
+### Q4. What is the difference between `/` and `/root`?
 
 Answer:
 
 ```text
-/tmp
-```
-
-### 5. What is the difference between `/` and `/root`?
-
-Answer:
-
-```text
-/       → Root of the entire Linux file system
+/       → Root of the entire file system
 
 /root   → Home directory of the root user
 ```
 
 ---
 
-# 💡 Key Takeaway
+### Q5. Which command shows your current location?
 
-The Linux file system follows a **hierarchical tree structure** that begins at `/`.
+Answer:
 
-The most important directories to remember are:
+```bash
+pwd
+```
+
+---
+
+# 💡 Key Takeaways
+
+The Linux file system follows a **hierarchical tree structure**.
+
+The entire file system begins at:
 
 ```text
-/       → Root of the file system
-/home   → Normal users' home directories
-/root   → Root user's home directory
-/etc    → System configuration
+/
+```
+
+Important directories include:
+
+```text
+/       → Root of file system
+/home   → Normal users
+/root   → Root user's home
+/etc    → Configuration
 /bin    → Essential commands
-/boot   → Boot-related files
-/dev    → Device files
+/boot   → Boot files
+/dev    → Devices
 /tmp    → Temporary files
-/usr    → User applications and resources
+/usr    → Applications and resources
 /var    → Variable data and logs
 ```
 
-Understanding these directories is essential for working confidently with Linux.
+The most important concept to remember is:
+
+> **Everything in the Linux file system starts from the Root Directory `/`.**
 
 ---
 
@@ -546,23 +472,48 @@ The Linux File System Hierarchy is a standardized structure that organizes files
 
 ---
 
-## Q2. What is the Root Directory?
+## Q2. What is the Root Directory in Linux?
 
 **Answer:**
 
-The Root Directory `/` is the top-most directory in the Linux file system. All other files and directories exist below it.
+The Root Directory `/` is the top-most directory in the Linux file system.
+
+All files and directories exist somewhere below it.
 
 ---
 
-## Q3. What is the purpose of `/home`?
+## Q3. What is the difference between `/` and `/root`?
+
+**Answer:**
+
+`/` is the root of the entire Linux file system.
+
+`/root` is the home directory of the root user.
+
+```text
+/       → Root of the entire file system
+
+/root   → Root user's home directory
+```
+
+---
+
+## Q4. What is the purpose of `/home`?
 
 **Answer:**
 
 `/home` contains the personal home directories of normal users.
 
+For example:
+
+```text
+/home/user1
+/home/user2
+```
+
 ---
 
-## Q4. What is stored in `/etc`?
+## Q5. What is stored in `/etc`?
 
 **Answer:**
 
@@ -570,15 +521,52 @@ The Root Directory `/` is the top-most directory in the Linux file system. All o
 
 ---
 
-## Q5. What is the difference between `/` and `/root`?
+## Q6. What is the purpose of `/var`?
 
 **Answer:**
 
-`/` is the root of the entire Linux file system, while `/root` is the home directory of the root user.
+`/var` contains variable data that changes frequently while the system is running.
+
+Examples include:
+
+- Log files
+- Cache files
+- Spool files
 
 ---
 
-## Q6. What is the purpose of `/tmp`?
+## Q7. What is `/proc`?
+
+**Answer:**
+
+`/proc` is a virtual file system that provides information about running processes and the Linux kernel.
+
+Examples:
+
+```text
+/proc/cpuinfo
+/proc/meminfo
+```
+
+---
+
+## Q8. What is `/dev`?
+
+**Answer:**
+
+`/dev` contains special files that represent hardware devices and other device interfaces.
+
+Examples include:
+
+```text
+/dev/sda
+/dev/null
+/dev/tty
+```
+
+---
+
+## Q9. What is the purpose of `/tmp`?
 
 **Answer:**
 
@@ -586,64 +574,97 @@ The Root Directory `/` is the top-most directory in the Linux file system. All o
 
 ---
 
-## Q7. What is `/var` used for?
+## Q10. What is the purpose of `/usr`?
 
 **Answer:**
 
-`/var` stores variable data that changes frequently, such as logs, caches, and spool files.
+`/usr` contains many user-space applications, libraries, documentation, and shared resources.
 
 ---
 
-## Q8. What is `/proc`?
+## Q11. What is the purpose of `/boot`?
 
 **Answer:**
 
-`/proc` is a virtual file system that provides information about running processes and the Linux kernel.
+`/boot` contains files required to start the Linux operating system, including the Linux kernel and bootloader-related files.
 
 ---
 
-# 🧠 Remember This
+## Q12. What is the purpose of `/bin`?
+
+**Answer:**
+
+`/bin` traditionally contains essential executable commands required by users and the system.
+
+On many modern Linux distributions, `/bin` may be a symbolic link to `/usr/bin`.
+
+---
+
+## Q13. What is the purpose of `/sbin`?
+
+**Answer:**
+
+`/sbin` traditionally contains system administration commands used for system management and maintenance.
+
+---
+
+## Q14. Why is understanding the Linux File System Hierarchy important?
+
+**Answer:**
+
+Understanding the hierarchy helps users navigate Linux systems, locate configuration files, find logs, manage files, troubleshoot problems, and understand how the operating system is organized.
+
+---
+
+# 🧠 Interview Quick Revision
 
 ```text
-/       → Root
-/home   → Users
-/root   → Root User
-/etc    → Configuration
-/bin    → Commands
-/boot   → Boot
-/dev    → Devices
-/tmp    → Temporary
-/usr    → Applications
-/var    → Variable Data
+/       → Root of the entire file system
+/bin    → Essential commands
+/boot   → Boot-related files
+/dev    → Device files
+/etc    → Configuration files
+/home   → Normal users
+/lib    → Essential libraries
+/media  → Removable media
+/mnt    → Temporary mount point
+/opt    → Optional software
+/proc   → Process information
+/root   → Root user's home
+/run    → Runtime information
+/sbin   → System administration commands
+/srv    → Service data
+/sys    → Hardware and kernel information
+/tmp    → Temporary files
+/usr    → User applications and resources
+/var    → Variable data and logs
 ```
 
 ---
 
-# 🎯 Lesson Complete
+# 🏆 Lesson Completion Checklist
 
-You now understand the basic structure of the Linux File System Hierarchy.
-
-You learned:
-
-- ✅ What a file system is
-- ✅ What `/` represents
-- ✅ Important Linux directories
-- ✅ The difference between `/` and `/root`
-- ✅ How to navigate the file system
-- ✅ How to explore directories using terminal commands
+- [x] Understand what a Linux file system is
+- [x] Understand the Root Directory `/`
+- [x] Understand the Linux File System Hierarchy
+- [x] Learn important Linux directories
+- [x] Explore the file system using terminal commands
+- [x] Complete hands-on practice
+- [x] Review key takeaways
+- [x] Prepare for interview questions
 
 ---
 
 # 🧭 Linux Quest Navigation
 
-⬅️ [Back to Level 01 — Linux Basics](../level-01-linux-basics/README.md)
+⬅️ [Previous Lesson — Level 01 Linux Basics](../level-01-linux-basics/README.md)
 
 🏠 [Linux Quest Home](../../README.md)
 
-➡️ **Next Lesson: Important Linux Directories**
+➡️ [Next Lesson — Important Linux Directories](02-important-linux-directories.md)
 
 ---
 
 > 🐧 **The Quest Continues...**
 
-> 💡 *Learn the structure. Master the system.*
+> 💡 *Understand the structure. Navigate the system. Master Linux.*
