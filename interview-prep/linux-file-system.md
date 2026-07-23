@@ -1221,3 +1221,493 @@ I would look in:
 > 🐧 **Linux Quest — Level 02 Interview Preparation**
 
 > *Know the directories. Understand the system. Answer with confidence.*
+
+---
+
+# 🛣️ Lesson 03 — Linux File Paths & Navigation
+
+## Q69. What is a file path in Linux?
+
+**Answer:**
+
+A file path describes the location of a file or directory within the Linux file system.
+
+Example:
+
+```text
+/home/rishika/Documents
+```
+
+---
+
+## Q70. What is an absolute path?
+
+**Answer:**
+
+An absolute path specifies the complete location of a file or directory starting from the Root Directory `/`.
+
+Example:
+
+```text
+/home/rishika/Documents
+```
+
+An absolute path does not depend on the current working directory.
+
+---
+
+## Q71. What is a relative path?
+
+**Answer:**
+
+A relative path specifies a location relative to the current working directory.
+
+Example:
+
+```text
+Documents/Linux
+```
+
+A relative path does not start with `/`.
+
+---
+
+## Q72. What is the difference between an absolute path and a relative path?
+
+**Answer:**
+
+An absolute path starts from the Root Directory `/` and provides the complete location.
+
+A relative path starts from the current working directory and depends on the current location.
+
+Example:
+
+```text
+Absolute:
+/home/rishika/Documents
+
+Relative:
+Documents
+```
+
+---
+
+## Q73. What does the `/` symbol represent?
+
+**Answer:**
+
+`/` represents the Root Directory of the Linux file system.
+
+All other directories exist under the Root Directory.
+
+Example:
+
+```text
+/
+├── home
+├── etc
+├── var
+└── usr
+```
+
+---
+
+## Q74. What does `~` represent in Linux?
+
+**Answer:**
+
+The `~` symbol represents the current user's home directory.
+
+For example:
+
+```bash
+cd ~
+```
+
+takes the user to their home directory.
+
+---
+
+## Q75. What does `.` represent?
+
+**Answer:**
+
+`.` represents the current working directory.
+
+Example:
+
+```bash
+ls .
+```
+
+This lists the contents of the current directory.
+
+---
+
+## Q76. What does `..` represent?
+
+**Answer:**
+
+`..` represents the parent directory of the current working directory.
+
+Example:
+
+If the current location is:
+
+```text
+/home/rishika/Documents
+```
+
+Then:
+
+```bash
+cd ..
+```
+
+moves to:
+
+```text
+/home/rishika
+```
+
+---
+
+## Q77. What does `cd -` do?
+
+**Answer:**
+
+`cd -` switches to the previous working directory.
+
+Example:
+
+```bash
+cd /etc
+cd /var
+cd -
+```
+
+The last command takes you back to:
+
+```text
+/etc
+```
+
+---
+
+## Q78. What is the purpose of the `pwd` command?
+
+**Answer:**
+
+`pwd` stands for **Print Working Directory**.
+
+It displays the absolute path of the current working directory.
+
+Example:
+
+```bash
+pwd
+```
+
+Output:
+
+```text
+/home/rishika
+```
+
+---
+
+## Q79. What is the purpose of the `cd` command?
+
+**Answer:**
+
+`cd` stands for **Change Directory**.
+
+It is used to navigate between directories.
+
+Examples:
+
+```bash
+cd /etc
+cd Documents
+cd ..
+cd ~
+```
+
+---
+
+## Q80. What does the `ls` command do?
+
+**Answer:**
+
+`ls` lists the contents of a directory.
+
+Examples:
+
+```bash
+ls
+ls -l
+ls -a
+ls -la
+```
+
+---
+
+## Q81. How do you go to the Root Directory?
+
+**Answer:**
+
+Use:
+
+```bash
+cd /
+```
+
+---
+
+## Q82. How do you go to your Home Directory?
+
+**Answer:**
+
+Use:
+
+```bash
+cd ~
+```
+
+or simply:
+
+```bash
+cd
+```
+
+---
+
+## Q83. How do you move one directory up?
+
+**Answer:**
+
+Use:
+
+```bash
+cd ..
+```
+
+This moves to the parent directory.
+
+---
+
+## Q84. How do you check your current location?
+
+**Answer:**
+
+Use:
+
+```bash
+pwd
+```
+
+---
+
+## Q85. How do you list hidden files?
+
+**Answer:**
+
+Use:
+
+```bash
+ls -a
+```
+
+Hidden files in Linux usually begin with a `.`.
+
+Examples:
+
+```text
+.bashrc
+.profile
+.gitconfig
+```
+
+---
+
+# 🧩 Scenario-Based Interview Questions
+
+## Q86. You are currently in `/home/rishika` and want to go to `/home/rishika/Documents`. How can you do it using a relative path?
+
+**Answer:**
+
+Use:
+
+```bash
+cd Documents
+```
+
+---
+
+## Q87. You are currently in `/home/rishika` and want to go to `/home/rishika/Documents`. How can you do it using an absolute path?
+
+**Answer:**
+
+Use:
+
+```bash
+cd /home/rishika/Documents
+```
+
+---
+
+## Q88. You are currently in `/home/rishika/Documents`. How do you go back to `/home/rishika`?
+
+**Answer:**
+
+Use:
+
+```bash
+cd ..
+```
+
+---
+
+## Q89. You are currently in `/var/log`. How do you go directly to the Root Directory?
+
+**Answer:**
+
+Use:
+
+```bash
+cd /
+```
+
+---
+
+## Q90. You are currently in `/etc` and then navigate to `/var`. How can you return to `/etc`?
+
+**Answer:**
+
+Use:
+
+```bash
+cd -
+```
+
+---
+
+## Q91. You don't know your current location. Which command should you use?
+
+**Answer:**
+
+Use:
+
+```bash
+pwd
+```
+
+---
+
+## Q92. You want to see hidden files in the current directory. Which command should you use?
+
+**Answer:**
+
+Use:
+
+```bash
+ls -a
+```
+
+---
+
+## Q93. What happens if you use `cd ..` while you are in `/home`?
+
+**Answer:**
+
+You move to the parent directory:
+
+```text
+/
+```
+
+Because `/` is the parent of `/home`.
+
+---
+
+## Q94. What happens if you use `cd ..` while you are already in `/`?
+
+**Answer:**
+
+You remain in:
+
+```text
+/
+```
+
+The Root Directory has no parent directory above it.
+
+---
+
+## Q95. Why is an absolute path more predictable than a relative path?
+
+**Answer:**
+
+An absolute path always starts from `/` and identifies the complete location of a file or directory.
+
+A relative path depends on the current working directory, so the same relative path may point to different locations depending on where the user currently is.
+
+---
+
+# ⚡ Rapid Fire — Lesson 03
+
+| Question | Answer |
+|---|---|
+| Root Directory symbol? | `/` |
+| Home Directory symbol? | `~` |
+| Current Directory symbol? | `.` |
+| Parent Directory symbol? | `..` |
+| Previous Directory? | `-` with `cd` |
+| Show current location? | `pwd` |
+| Change directory? | `cd` |
+| List files? | `ls` |
+| Show hidden files? | `ls -a` |
+| Absolute path starts with? | `/` |
+| Relative path depends on? | Current working directory |
+| Go to Root? | `cd /` |
+| Go to Home? | `cd ~` |
+| Go to Parent? | `cd ..` |
+| Go to Previous Directory? | `cd -` |
+
+---
+
+# 🎯 Interview Checklist — Lesson 03
+
+- [ ] Explain file paths
+- [ ] Explain absolute paths
+- [ ] Explain relative paths
+- [ ] Differentiate absolute and relative paths
+- [ ] Explain `/`
+- [ ] Explain `~`
+- [ ] Explain `.`
+- [ ] Explain `..`
+- [ ] Explain `cd -`
+- [ ] Explain `pwd`
+- [ ] Explain `cd`
+- [ ] Explain `ls`
+- [ ] Explain hidden files
+- [ ] Solve navigation scenarios
+- [ ] Practice rapid-fire questions
+
+---
+
+## 🔗 Related Resources
+
+📖 [Lesson 03 — Linux File Paths & Navigation](../levels/level-02-file-system/03-linux-file-paths-and-navigation.md)
+
+🖼️ [Linux File Paths & Navigation Diagram](../assets/diagrams/linux-file-paths-navigation.md)
+
+🧪 [Linux File System Lab](../labs/01-linux-file-system-lab.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 03 Interview Preparation**
+
+> *Master the path. Master the terminal.*
