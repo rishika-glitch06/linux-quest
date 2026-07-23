@@ -113,3 +113,11 @@ By completing Level 02, you will be able to:
 ⬅️ Back to Linux Quest
 
 ➡️
+### 📖 Lesson 03 — Linux File Paths & Navigation
+
+Learn how Linux file paths work and how to navigate the file system using absolute paths, relative paths, and special path symbols.
+
+- 📖 [Lesson 03 — Linux File Paths & Navigation](./03-linux-file-paths-and-navigation.md)
+- 🖼️ [Linux File Paths & Navigation Diagram](../../assets/diagrams/linux-file-paths-navigation.md)
+- 💼 [Linux File System Interview Preparation](../../interview-prep/linux-file-system.md)
+- 🧪 [Linux File Paths & Navigation Lab](../../labs/03-linux-file-paths-navigation-lab.md)
