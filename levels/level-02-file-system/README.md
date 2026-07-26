@@ -121,3 +121,12 @@ Learn how Linux file paths work and how to navigate the file system using absolu
 - 🖼️ [Linux File Paths & Navigation Diagram](../../assets/diagrams/linux-file-paths-navigation.md)
 - 💼 [Linux File System Interview Preparation](../../interview-prep/linux-file-system.md)
 - 🧪 [Linux File Paths & Navigation Lab](../../labs/03-linux-file-paths-navigation-lab.md)
+
+### 📖 Lesson 04 — File & Directory Management
+
+Learn how to create, copy, move, rename, view, and delete files and directories using essential Linux commands.
+
+- 📖 [Lesson 04 — File & Directory Management](./04-file-and-directory-management.md)
+- 🖼️ [File & Directory Management Diagram](../../assets/diagrams/file-and-directory-management.md)
+- 💼 [Linux File System Interview Preparation](../../interview-prep/linux-file-system.md)
+- 🧪 [File & Directory Management Lab](../../labs/04-file-and-directory-management-lab.md)
