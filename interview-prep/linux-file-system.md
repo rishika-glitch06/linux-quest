@@ -1711,3 +1711,598 @@ A relative path depends on the current working directory, so the same relative p
 > 🐧 **Linux Quest — Level 02, Lesson 03 Interview Preparation**
 
 > *Master the path. Master the terminal.*
+
+---
+
+# 🛠️ Lesson 04 — File & Directory Management Interview Preparation
+
+## Q96. Which command is used to create an empty file?
+
+**Answer:**
+
+The `touch` command is used to create an empty file.
+
+```bash
+touch notes.txt
+```
+
+---
+
+## Q97. Which command is used to create a directory?
+
+**Answer:**
+
+The `mkdir` command creates a new directory.
+
+```bash
+mkdir Projects
+```
+
+---
+
+## Q98. What is the purpose of `mkdir -p`?
+
+**Answer:**
+
+`mkdir -p` creates parent directories automatically when they do not already exist.
+
+Example:
+
+```bash
+mkdir -p Projects/Linux/Lesson04
+```
+
+This creates:
+
+```text
+Projects/
+└── Linux/
+    └── Lesson04/
+```
+
+---
+
+## Q99. Which command is used to copy a file?
+
+**Answer:**
+
+The `cp` command is used to copy files.
+
+Example:
+
+```bash
+cp notes.txt backup.txt
+```
+
+The original file remains unchanged.
+
+---
+
+## Q100. How do you copy a directory in Linux?
+
+**Answer:**
+
+Use the recursive option `-r` with `cp`.
+
+```bash
+cp -r Projects Projects_Backup
+```
+
+The `-r` option allows the directory and its contents to be copied.
+
+---
+
+## Q101. Which command is used to move a file?
+
+**Answer:**
+
+The `mv` command is used to move a file.
+
+Example:
+
+```bash
+mv notes.txt Projects/
+```
+
+---
+
+## Q102. Can `mv` be used to rename a file?
+
+**Answer:**
+
+Yes. The `mv` command is also used to rename files and directories.
+
+Example:
+
+```bash
+mv notes.txt linux_notes.txt
+```
+
+The file is renamed from `notes.txt` to `linux_notes.txt`.
+
+---
+
+## Q103. What is the difference between `cp` and `mv`?
+
+**Answer:**
+
+`cp` creates a copy while keeping the original.
+
+`mv` moves the original file to another location or changes its name.
+
+Example:
+
+```bash
+cp notes.txt backup.txt
+```
+
+The original `notes.txt` remains.
+
+```bash
+mv notes.txt backup.txt
+```
+
+The original name `notes.txt` no longer exists at the original location.
+
+---
+
+## Q104. Which command is used to delete a file?
+
+**Answer:**
+
+The `rm` command is used to remove files.
+
+Example:
+
+```bash
+rm notes.txt
+```
+
+---
+
+## Q105. How do you remove an empty directory?
+
+**Answer:**
+
+Use:
+
+```bash
+rmdir EmptyFolder
+```
+
+`rmdir` works only when the directory is empty.
+
+---
+
+## Q106. How do you remove a directory containing files?
+
+**Answer:**
+
+Use:
+
+```bash
+rm -r Projects
+```
+
+The `-r` option means recursive and allows the directory and its contents to be removed.
+
+---
+
+## Q107. What is the difference between `rmdir` and `rm -r`?
+
+**Answer:**
+
+`rmdir` removes only empty directories.
+
+```bash
+rmdir EmptyFolder
+```
+
+`rm -r` removes directories recursively, including their contents.
+
+```bash
+rm -r Projects
+```
+
+---
+
+## Q108. What does `rm -rf` do?
+
+**Answer:**
+
+`rm -rf` forcefully and recursively removes a directory and its contents.
+
+```bash
+rm -rf Projects
+```
+
+Where:
+
+```text
+-r → Recursive
+-f → Force
+```
+
+⚠️ It should be used carefully because it can permanently delete large amounts of data.
+
+---
+
+## Q109. What is the difference between `rm -r` and `rm -rf`?
+
+**Answer:**
+
+Both recursively remove directories and their contents.
+
+```bash
+rm -r Projects
+```
+
+removes recursively and may ask for confirmation depending on permissions and conditions.
+
+```bash
+rm -rf Projects
+```
+
+uses force mode and suppresses many confirmation prompts and errors.
+
+`rm -rf` is more dangerous and should be used carefully.
+
+---
+
+## Q110. Which command is used to display the contents of a file?
+
+**Answer:**
+
+The `cat` command displays the contents of a file.
+
+Example:
+
+```bash
+cat notes.txt
+```
+
+---
+
+## Q111. How can you view a large file page by page?
+
+**Answer:**
+
+Use:
+
+```bash
+less filename.txt
+```
+
+or:
+
+```bash
+more filename.txt
+```
+
+---
+
+## Q112. What is a wildcard in Linux?
+
+**Answer:**
+
+A wildcard is a special character used to match multiple file names.
+
+The `*` wildcard matches zero or more characters.
+
+Example:
+
+```bash
+ls *.txt
+```
+
+This lists all files ending with `.txt`.
+
+---
+
+## Q113. What does `*.txt` mean?
+
+**Answer:**
+
+It matches all files whose names end with `.txt`.
+
+Example:
+
+```text
+notes.txt
+backup.txt
+linux.txt
+```
+
+Command:
+
+```bash
+ls *.txt
+```
+
+---
+
+# 🧩 Scenario-Based Interview Questions
+
+## Q114. You need to create a file named `linux.txt`. Which command will you use?
+
+**Answer:**
+
+```bash
+touch linux.txt
+```
+
+---
+
+## Q115. You need to create a directory named `LinuxQuest`. Which command will you use?
+
+**Answer:**
+
+```bash
+mkdir LinuxQuest
+```
+
+---
+
+## Q116. You need to create the following directory structure in one command:
+
+```text
+LinuxQuest/
+└── Level02/
+    └── Lesson04/
+```
+
+**Answer:**
+
+```bash
+mkdir -p LinuxQuest/Level02/Lesson04
+```
+
+---
+
+## Q117. You want to create a backup copy of `notes.txt` named `notes_backup.txt`.
+
+**Answer:**
+
+```bash
+cp notes.txt notes_backup.txt
+```
+
+---
+
+## Q118. You want to copy the entire `Projects` directory to `Projects_Backup`.
+
+**Answer:**
+
+```bash
+cp -r Projects Projects_Backup
+```
+
+---
+
+## Q119. You want to move `notes.txt` into the `Documents` directory.
+
+**Answer:**
+
+```bash
+mv notes.txt Documents/
+```
+
+---
+
+## Q120. You want to rename `old.txt` to `new.txt`.
+
+**Answer:**
+
+```bash
+mv old.txt new.txt
+```
+
+---
+
+## Q121. You want to delete a file named `temporary.txt`.
+
+**Answer:**
+
+```bash
+rm temporary.txt
+```
+
+---
+
+## Q122. You want to delete an empty directory named `Test`.
+
+**Answer:**
+
+```bash
+rmdir Test
+```
+
+---
+
+## Q123. You want to delete a directory named `Test` containing files and subdirectories.
+
+**Answer:**
+
+```bash
+rm -r Test
+```
+
+---
+
+## Q124. You want to permanently force-remove a directory and all its contents.
+
+**Answer:**
+
+```bash
+rm -rf Test
+```
+
+⚠️ This command should be used with extreme caution.
+
+---
+
+## Q125. You want to display the contents of `notes.txt`.
+
+**Answer:**
+
+```bash
+cat notes.txt
+```
+
+---
+
+## Q126. You want to list all `.log` files in the current directory.
+
+**Answer:**
+
+```bash
+ls *.log
+```
+
+---
+
+## Q127. You accidentally created an empty directory and want to remove it.
+
+**Answer:**
+
+```bash
+rmdir DirectoryName
+```
+
+---
+
+## Q128. You tried to use `rmdir` on a directory containing files. What will happen?
+
+**Answer:**
+
+The command will fail because `rmdir` can remove only empty directories.
+
+To remove a directory containing files, use:
+
+```bash
+rm -r DirectoryName
+```
+
+---
+
+# 🧠 Conceptual Questions
+
+## Q129. Why is `rm -rf` considered dangerous?
+
+**Answer:**
+
+Because it recursively and forcefully deletes files and directories without asking for many confirmations.
+
+If used on the wrong path, it can cause significant data loss.
+
+---
+
+## Q130. Does `cp` remove the original file?
+
+**Answer:**
+
+No.
+
+`cp` creates a copy and keeps the original.
+
+---
+
+## Q131. Does `mv` create a second copy of the file?
+
+**Answer:**
+
+No.
+
+`mv` moves the original file or renames it.
+
+---
+
+## Q132. What does the `-r` option generally mean?
+
+**Answer:**
+
+`-r` generally means **recursive**.
+
+It allows a command to operate on a directory and its contents recursively.
+
+Examples:
+
+```bash
+cp -r
+rm -r
+```
+
+---
+
+## Q133. What does the `-f` option mean in `rm -rf`?
+
+**Answer:**
+
+`-f` means **force**.
+
+It suppresses many prompts and ignores certain errors.
+
+---
+
+# ⚡ Rapid-Fire Revision
+
+| Question | Answer |
+|---|---|
+| Create an empty file | `touch` |
+| Create a directory | `mkdir` |
+| Create nested directories | `mkdir -p` |
+| Copy a file | `cp` |
+| Copy a directory | `cp -r` |
+| Move a file | `mv` |
+| Rename a file | `mv` |
+| Delete a file | `rm` |
+| Delete an empty directory | `rmdir` |
+| Delete a directory recursively | `rm -r` |
+| Force recursive deletion | `rm -rf` |
+| Display file contents | `cat` |
+| View large files | `less` / `more` |
+| Match multiple characters | `*` |
+| Match one character | `?` |
+
+---
+
+# 🎯 Interview Checklist — Lesson 04
+
+- [ ] Explain `touch`
+- [ ] Explain `mkdir`
+- [ ] Explain `mkdir -p`
+- [ ] Explain `cp`
+- [ ] Explain `cp -r`
+- [ ] Explain `mv`
+- [ ] Explain file renaming using `mv`
+- [ ] Explain `rm`
+- [ ] Explain `rmdir`
+- [ ] Explain `rm -r`
+- [ ] Explain `rm -rf`
+- [ ] Explain `cat`
+- [ ] Explain `less`
+- [ ] Explain `more`
+- [ ] Explain wildcards
+- [ ] Differentiate `cp` and `mv`
+- [ ] Differentiate `rmdir` and `rm -r`
+- [ ] Understand the risks of `rm -rf`
+- [ ] Solve file management scenarios
+- [ ] Practice rapid-fire questions
+
+---
+
+## 🔗 Related Resources
+
+📖 [Lesson 04 — File & Directory Management](../levels/level-02-file-system/04-file-and-directory-management.md)
+
+🖼️ [File & Directory Management Diagram](../assets/diagrams/file-and-directory-management.md)
+
+🧪 [File & Directory Management Lab](../labs/04-file-and-directory-management-lab.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 04 Interview Preparation**
+
+> *Create. Copy. Move. Manage.*
