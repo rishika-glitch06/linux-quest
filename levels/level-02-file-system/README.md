@@ -130,3 +130,48 @@ Learn how to create, copy, move, rename, view, and delete files and directories 
 - 🖼️ [File & Directory Management Diagram](../../assets/diagrams/file-and-directory-management.md)
 - 💼 [Linux File System Interview Preparation](../../interview-prep/linux-file-system.md)
 - 🧪 [File & Directory Management Lab](../../labs/04-file-and-directory-management-lab.md)
+
+---
+
+## 📖 Lesson 05 — File Permissions & Ownership
+
+Learn how Linux controls access to files and directories using permissions, users, groups, and ownership.
+
+### 📚 Topics Covered
+
+- Linux file permissions
+- Read, Write, and Execute permissions
+- User, Group, and Others
+- Permission notation
+- Symbolic permissions
+- Numeric permissions
+- `chmod`
+- `chown`
+- `chgrp`
+- File ownership
+- Directory permissions
+- Principle of Least Privilege
+- Linux file security
+
+### 🖼️ Visual Learning
+
+📊 [File Permissions & Ownership Diagram](../../assets/diagrams/file-permissions-and-ownership.md)
+
+### 💼 Interview Preparation
+
+🎯 [File Permissions & Ownership Interview Questions](../../interview-prep/linux-file-system.md)
+
+### 🧪 Hands-on Lab
+
+🔬 [File Permissions & Ownership Lab](../../labs/05-file-permissions-and-ownership-lab.md)
+
+### ✅ Progress
+
+- [x] Lesson 05 — File Permissions & Ownership
+- [x] Diagram
+- [x] Interview Preparation
+- [x] Hands-on Lab
+
+**Status: 🟢 Complete**
+
+---
