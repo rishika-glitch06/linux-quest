@@ -2306,3 +2306,774 @@ It suppresses many prompts and ignores certain errors.
 > 🐧 **Linux Quest — Level 02, Lesson 04 Interview Preparation**
 
 > *Create. Copy. Move. Manage.*
+
+---
+
+# 🔐 Lesson 05 — File Permissions & Ownership Interview Preparation
+
+## Q134. What are Linux file permissions?
+
+**Answer:**
+
+Linux file permissions control who can read, write, or execute a file or access a directory.
+
+The three basic permissions are:
+
+```text
+r → Read
+w → Write
+x → Execute
+```
+
+---
+
+## Q135. What are the three permission categories in Linux?
+
+**Answer:**
+
+Linux permissions are assigned to:
+
+```text
+u → User / Owner
+g → Group
+o → Others
+```
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+Means:
+
+```text
+User    → rwx
+Group   → r-x
+Others  → r--
+```
+
+---
+
+## Q136. What does `r` mean?
+
+**Answer:**
+
+`r` means **read**.
+
+For a file:
+
+```text
+Read the contents
+```
+
+For a directory:
+
+```text
+List the contents
+```
+
+---
+
+## Q137. What does `w` mean?
+
+**Answer:**
+
+`w` means **write**.
+
+For a file:
+
+```text
+Modify the contents
+```
+
+For a directory:
+
+```text
+Create, delete, or rename entries
+```
+
+---
+
+## Q138. What does `x` mean?
+
+**Answer:**
+
+`x` means **execute**.
+
+For a file:
+
+```text
+Run the file as a program
+```
+
+For a directory:
+
+```text
+Access or enter the directory
+```
+
+---
+
+## Q139. How do you view file permissions?
+
+**Answer:**
+
+Use:
+
+```bash
+ls -l
+```
+
+Example:
+
+```text
+-rw-r--r-- 1 rishika users 120 Jul 27 notes.txt
+```
+
+The first part:
+
+```text
+-rw-r--r--
+```
+
+represents the file type and permissions.
+
+---
+
+## Q140. What does the first character in `ls -l` output represent?
+
+**Answer:**
+
+It represents the file type.
+
+```text
+- → Regular file
+d → Directory
+l → Symbolic link
+```
+
+Example:
+
+```text
+-rw-r--r--
+```
+
+The first character `-` means it is a regular file.
+
+---
+
+## Q141. Explain `-rwxr-xr--`.
+
+**Answer:**
+
+Break it into groups:
+
+```text
+-rwxr-xr--
+│ │   │   │
+│ │   │   └── Others
+│ │   └────── Group
+│ └────────── User
+└──────────── File type
+```
+
+Therefore:
+
+```text
+User    → rwx → Read + Write + Execute
+Group   → r-x → Read + Execute
+Others  → r-- → Read only
+```
+
+---
+
+## Q142. What is `chmod`?
+
+**Answer:**
+
+`chmod` stands for **change mode**.
+
+It is used to change file and directory permissions.
+
+Example:
+
+```bash
+chmod u+x script.sh
+```
+
+This adds execute permission for the owner.
+
+---
+
+## Q143. What are symbolic permission modes?
+
+**Answer:**
+
+Symbolic modes use:
+
+```text
+u → User
+g → Group
+o → Others
+a → All
+```
+
+Operators:
+
+```text
++ → Add permission
+- → Remove permission
+= → Set exact permission
+```
+
+Example:
+
+```bash
+chmod u+x script.sh
+```
+
+---
+
+## Q144. How do you add execute permission to the owner?
+
+**Answer:**
+
+```bash
+chmod u+x script.sh
+```
+
+---
+
+## Q145. How do you add write permission to the group?
+
+**Answer:**
+
+```bash
+chmod g+w notes.txt
+```
+
+---
+
+## Q146. How do you remove write permission from others?
+
+**Answer:**
+
+```bash
+chmod o-w notes.txt
+```
+
+---
+
+## Q147. How do you give execute permission to everyone?
+
+**Answer:**
+
+```bash
+chmod a+x script.sh
+```
+
+---
+
+## Q148. What are numeric permissions?
+
+**Answer:**
+
+Linux permissions can be represented using numbers.
+
+```text
+Read    = 4
+Write   = 2
+Execute = 1
+```
+
+The values are added together.
+
+Examples:
+
+```text
+r-- = 4
+-w- = 2
+--x = 1
+rw- = 6
+r-x = 5
+rwx = 7
+```
+
+---
+
+## Q149. What does `chmod 755` mean?
+
+**Answer:**
+
+```bash
+chmod 755 filename
+```
+
+Means:
+
+```text
+User    → 7 → rwx
+Group   → 5 → r-x
+Others  → 5 → r-x
+```
+
+So the permission becomes:
+
+```text
+rwxr-xr-x
+```
+
+---
+
+## Q150. What does `chmod 644` mean?
+
+**Answer:**
+
+```bash
+chmod 644 notes.txt
+```
+
+Means:
+
+```text
+User    → 6 → rw-
+Group   → 4 → r--
+Others  → 4 → r--
+```
+
+Result:
+
+```text
+rw-r--r--
+```
+
+This is a common permission for regular files.
+
+---
+
+## Q151. What does `chmod 777` mean?
+
+**Answer:**
+
+```bash
+chmod 777 filename
+```
+
+Means:
+
+```text
+User    → rwx
+Group   → rwx
+Others  → rwx
+```
+
+Everyone has full permissions.
+
+⚠️ This is generally discouraged unless there is a specific reason.
+
+---
+
+## Q152. Why is `chmod 777` dangerous?
+
+**Answer:**
+
+It gives everyone read, write, and execute permissions.
+
+This can allow unauthorized users or processes to modify or execute files.
+
+It violates the principle of least privilege when used unnecessarily.
+
+---
+
+## Q153. What is the Principle of Least Privilege?
+
+**Answer:**
+
+The Principle of Least Privilege means giving users and processes only the permissions they actually need.
+
+For example, if a file only needs to be readable, do not give it write or execute permissions.
+
+---
+
+## Q154. What is file ownership?
+
+**Answer:**
+
+Every Linux file has:
+
+```text
+Owner
+Group
+```
+
+Example:
+
+```text
+-rw-r--r-- 1 rishika developers 120 notes.txt
+```
+
+Here:
+
+```text
+Owner → rishika
+Group → developers
+```
+
+---
+
+## Q155. What is `chown`?
+
+**Answer:**
+
+`chown` stands for **change owner**.
+
+It is used to change the owner of a file or directory.
+
+Example:
+
+```bash
+sudo chown alice notes.txt
+```
+
+---
+
+## Q156. How do you change both owner and group?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo chown alice:developers notes.txt
+```
+
+This changes:
+
+```text
+Owner → alice
+Group → developers
+```
+
+---
+
+## Q157. What is `chgrp`?
+
+**Answer:**
+
+`chgrp` stands for **change group**.
+
+It changes the group ownership of a file or directory.
+
+Example:
+
+```bash
+sudo chgrp developers notes.txt
+```
+
+---
+
+## Q158. What is the difference between `chmod` and `chown`?
+
+**Answer:**
+
+```text
+chmod
+│
+└── Changes permissions
+
+chown
+│
+└── Changes ownership
+```
+
+Example:
+
+```bash
+chmod 644 notes.txt
+```
+
+Changes permissions.
+
+```bash
+sudo chown alice notes.txt
+```
+
+Changes ownership.
+
+---
+
+## Q159. What is the difference between `chown` and `chgrp`?
+
+**Answer:**
+
+```text
+chown
+│
+└── Changes file owner
+    and optionally group
+
+chgrp
+│
+└── Changes group ownership
+```
+
+---
+
+## Q160. How are directory permissions different from file permissions?
+
+**Answer:**
+
+For files:
+
+```text
+r → Read contents
+w → Modify contents
+x → Execute
+```
+
+For directories:
+
+```text
+r → List contents
+w → Create/delete/rename entries
+x → Enter/access directory
+```
+
+---
+
+## Q161. What does execute permission mean for a directory?
+
+**Answer:**
+
+Execute permission on a directory allows a user to access or enter the directory and access entries within it, subject to other permissions.
+
+Example:
+
+```bash
+cd Projects
+```
+
+requires execute permission on the directory.
+
+---
+
+## Q162. What does `chmod 754` mean?
+
+**Answer:**
+
+```bash
+chmod 754 filename
+```
+
+Breakdown:
+
+```text
+7 → rwx → User
+5 → r-x → Group
+4 → r-- → Others
+```
+
+Final permission:
+
+```text
+rwxr-xr--
+```
+
+---
+
+# 🧩 Scenario-Based Interview Questions
+
+## Q163. You want the owner to have full permissions and everyone else to have read-only access. Which command?
+
+**Answer:**
+
+```bash
+chmod 744 filename
+```
+
+Result:
+
+```text
+rwxr--r--
+```
+
+---
+
+## Q164. You want a script to be executable by the owner.
+
+**Answer:**
+
+```bash
+chmod u+x script.sh
+```
+
+---
+
+## Q165. You want everyone to be able to execute a script.
+
+**Answer:**
+
+```bash
+chmod a+x script.sh
+```
+
+---
+
+## Q166. You want to remove write permission from everyone.
+
+**Answer:**
+
+```bash
+chmod a-w filename
+```
+
+---
+
+## Q167. You want to change the owner of `notes.txt` to `alice`.
+
+**Answer:**
+
+```bash
+sudo chown alice notes.txt
+```
+
+---
+
+## Q168. You want to change the group of `notes.txt` to `developers`.
+
+**Answer:**
+
+```bash
+sudo chgrp developers notes.txt
+```
+
+---
+
+## Q169. You want to change both owner and group.
+
+**Answer:**
+
+```bash
+sudo chown alice:developers notes.txt
+```
+
+---
+
+## Q170. A file has permissions `-rw-r--r--`. What can the owner do?
+
+**Answer:**
+
+The owner has:
+
+```text
+rw-
+```
+
+Therefore, the owner can:
+
+```text
+Read
+Write
+```
+
+But cannot execute the file.
+
+---
+
+## Q171. A file has permissions `-rwxr-x---`. Who has access?
+
+**Answer:**
+
+```text
+User:
+rwx → Full permissions
+
+Group:
+r-x → Read + Execute
+
+Others:
+--- → No permissions
+```
+
+Only the owner and group have access.
+
+---
+
+## Q172. You see `chmod 777` in a production server. What would you do?
+
+**Answer:**
+
+I would first investigate why the permission was set to `777`.
+
+I would avoid changing it blindly, because changing permissions without understanding the application's requirements could break functionality.
+
+If full permissions are unnecessary, I would apply the principle of least privilege and use the minimum permissions required.
+
+---
+
+# ⚡ Rapid-Fire Revision
+
+| Question | Answer |
+|---|---|
+| Read permission | `r` |
+| Write permission | `w` |
+| Execute permission | `x` |
+| Owner | `u` |
+| Group | `g` |
+| Others | `o` |
+| All | `a` |
+| View permissions | `ls -l` |
+| Change permissions | `chmod` |
+| Change owner | `chown` |
+| Change group | `chgrp` |
+| Read value | `4` |
+| Write value | `2` |
+| Execute value | `1` |
+| Full permissions | `7` |
+| Common file permission | `644` |
+| Common executable permission | `755` |
+| Full access for everyone | `777` |
+| Recursive permission change | `chmod -R` |
+
+---
+
+# 🎯 Interview Checklist — Lesson 05
+
+- [ ] Explain Linux file permissions
+- [ ] Explain `r`, `w`, and `x`
+- [ ] Explain User, Group, and Others
+- [ ] Read `ls -l` output
+- [ ] Understand permission notation
+- [ ] Explain `chmod`
+- [ ] Use symbolic permissions
+- [ ] Understand numeric permissions
+- [ ] Calculate permissions using 4, 2, and 1
+- [ ] Explain `chmod 644`
+- [ ] Explain `chmod 755`
+- [ ] Explain why `chmod 777` can be dangerous
+- [ ] Explain `chown`
+- [ ] Explain `chgrp`
+- [ ] Understand directory permissions
+- [ ] Understand the Principle of Least Privilege
+- [ ] Solve permission scenarios
+- [ ] Solve ownership scenarios
+- [ ] Complete rapid-fire revision
+
+---
+
+## 🔗 Related Resources
+
+📖 [Lesson 05 — File Permissions & Ownership](../levels/level-02-file-system/05-file-permissions-and-ownership.md)
+
+🖼️ [File Permissions & Ownership Diagram](../assets/diagrams/file-permissions-and-ownership.md)
+
+🧪 [File Permissions & Ownership Lab](../labs/05-file-permissions-and-ownership-lab.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 05 Interview Preparation**
+
+> *Understand permissions. Control access. Secure the system.*
