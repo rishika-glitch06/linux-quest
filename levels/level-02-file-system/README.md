@@ -175,3 +175,78 @@ Learn how Linux controls access to files and directories using permissions, user
 **Status: 🟢 Complete**
 
 ---
+---
+
+# 👤 Lesson 06 — Linux Users & Groups
+
+Learn how Linux manages users, groups, identities, authentication files, and administrative privileges.
+
+## 📚 Topics Covered
+
+- Linux Users
+- Linux Groups
+- UID (User ID)
+- GID (Group ID)
+- Root User
+- Primary Group
+- Secondary Groups
+- User Management
+- Group Management
+- `/etc/passwd`
+- `/etc/shadow`
+- `/etc/group`
+- `whoami`
+- `id`
+- `who`
+- `w`
+- `users`
+- `groups`
+- `useradd`
+- `adduser`
+- `usermod`
+- `userdel`
+- `groupadd`
+- `groupmod`
+- `groupdel`
+- `passwd`
+- `sudo`
+- Principle of Least Privilege
+
+---
+
+## 🖼️ Visual Learning
+
+📊 [Linux Users & Groups Diagram](../../assets/diagrams/linux-users-and-groups.md)
+
+---
+
+## 💼 Interview Preparation
+
+🎯 [Linux Users & Groups Interview Questions](../../interview-prep/linux-file-system.md)
+
+---
+
+## 🧪 Hands-on Lab
+
+🔬 [Linux Users & Groups Lab](../../labs/06-linux-users-and-groups-lab.md)
+
+---
+
+## ✅ Progress
+
+- [x] Lesson 06 — Linux Users & Groups
+- [x] Diagram
+- [x] Interview Preparation
+- [x] Hands-on Lab
+
+**Status: 🟢 Complete**
+
+---
+
+## 🔗 Navigation
+
+⬅️ **Previous:** Lesson 05 — File Permissions & Ownership
+
+➡️ **Next:** Lesson 07 — Process Management (Coming Soon)
+
+---
