@@ -3077,3 +3077,1213 @@ If full permissions are unnecessary, I would apply the principle of least privil
 > 🐧 **Linux Quest — Level 02, Lesson 05 Interview Preparation**
 
 > *Understand permissions. Control access. Secure the system.*
+
+---
+
+# 👤 Lesson 06 — Linux Users & Groups Interview Preparation
+
+> Interview preparation covering Linux users, groups, UID, GID, root, authentication files, user management, group management, and `sudo`.
+
+---
+
+# 🟢 Basic Interview Questions
+
+## Q173. What is a user in Linux?
+
+**Answer:**
+
+A user in Linux represents an identity that can interact with the operating system.
+
+A user can:
+
+- Own files
+- Access resources
+- Run processes
+- Execute commands
+- Have specific permissions
+
+Each user has a unique **UID (User ID)**.
+
+---
+
+## Q174. What is a group in Linux?
+
+**Answer:**
+
+A group is a collection of users.
+
+Groups simplify permission management because permissions can be assigned to a group instead of configuring each user individually.
+
+Example:
+
+```text
+developers
+    │
+    ├── Alice
+    ├── Bob
+    └── Charlie
+```
+
+All members of the group can receive permissions assigned to the group.
+
+---
+
+## Q175. What is UID?
+
+**Answer:**
+
+UID stands for **User ID**.
+
+It is a unique numeric identifier assigned to a Linux user.
+
+Check the current user's UID:
+
+```bash
+id -u
+```
+
+Check another user's UID:
+
+```bash
+id -u username
+```
+
+Example:
+
+```text
+1000
+```
+
+---
+
+## Q176. What is GID?
+
+**Answer:**
+
+GID stands for **Group ID**.
+
+It is a unique numeric identifier assigned to a Linux group.
+
+You can view GID information using:
+
+```bash
+id
+```
+
+Example:
+
+```text
+uid=1000(rishika) gid=1000(rishika)
+```
+
+Here:
+
+```text
+UID = 1000
+GID = 1000
+```
+
+---
+
+## Q177. What is the UID of the root user?
+
+**Answer:**
+
+The root user's UID is:
+
+```text
+0
+```
+
+You can verify it using:
+
+```bash
+id root
+```
+
+---
+
+## Q178. Who is the root user?
+
+**Answer:**
+
+Root is the superuser in Linux.
+
+The root user has extensive privileges and can perform administrative operations such as:
+
+- Creating and deleting users
+- Changing file ownership
+- Changing permissions
+- Managing system services
+- Modifying system configuration
+- Installing software
+
+Root has:
+
+```text
+UID = 0
+```
+
+---
+
+## Q179. What is the difference between a normal user and root?
+
+**Answer:**
+
+```text
+Normal User
+    ↓
+Limited permissions
+
+Root
+    ↓
+Extensive administrative privileges
+```
+
+A normal user generally needs `sudo` to perform privileged operations.
+
+---
+
+# 🔍 User Identification Commands
+
+## Q180. What does `whoami` do?
+
+**Answer:**
+
+`whoami` displays the username of the currently logged-in user.
+
+```bash
+whoami
+```
+
+Example output:
+
+```text
+rishika
+```
+
+---
+
+## Q181. What does the `id` command do?
+
+**Answer:**
+
+The `id` command displays information about a user's identity.
+
+It can show:
+
+- UID
+- GID
+- Group memberships
+
+Example:
+
+```bash
+id
+```
+
+Example output:
+
+```text
+uid=1000(rishika) gid=1000(rishika) groups=1000(rishika)
+```
+
+---
+
+## Q182. How do you find the UID of a user?
+
+**Answer:**
+
+Use:
+
+```bash
+id -u username
+```
+
+Example:
+
+```bash
+id -u alice
+```
+
+---
+
+## Q183. How do you find a user's group membership?
+
+**Answer:**
+
+Use:
+
+```bash
+groups username
+```
+
+Example:
+
+```bash
+groups alice
+```
+
+You can also use:
+
+```bash
+id alice
+```
+
+---
+
+## Q184. What is the difference between `who`, `w`, and `users`?
+
+**Answer:**
+
+```text
+who
+ ↓
+Shows logged-in users with basic information
+
+w
+ ↓
+Shows detailed information about logged-in users
+
+users
+ ↓
+Shows usernames of currently logged-in users
+```
+
+Commands:
+
+```bash
+who
+```
+
+```bash
+w
+```
+
+```bash
+users
+```
+
+---
+
+# 📄 Linux User and Group Files
+
+## Q185. What is `/etc/passwd`?
+
+**Answer:**
+
+`/etc/passwd` is a system file that stores basic information about Linux user accounts.
+
+It typically contains:
+
+- Username
+- Password placeholder
+- UID
+- GID
+- User information
+- Home directory
+- Login shell
+
+View it using:
+
+```bash
+cat /etc/passwd
+```
+
+---
+
+## Q186. Explain the fields in `/etc/passwd`.
+
+**Answer:**
+
+A typical entry looks like:
+
+```text
+rishika:x:1000:1000:Rishika:/home/rishika:/bin/bash
+```
+
+The fields are:
+
+```text
+1. Username
+2. Password placeholder
+3. UID
+4. GID
+5. User information / GECOS
+6. Home directory
+7. Login shell
+```
+
+---
+
+## Q187. What is `/etc/shadow`?
+
+**Answer:**
+
+`/etc/shadow` stores password-related information and authentication data for Linux users.
+
+It contains sensitive information and therefore has restricted access.
+
+Access generally requires administrative privileges:
+
+```bash
+sudo cat /etc/shadow
+```
+
+---
+
+## Q188. What is `/etc/group`?
+
+**Answer:**
+
+`/etc/group` stores information about Linux groups.
+
+It contains information such as:
+
+- Group name
+- GID
+- Group members
+
+View it using:
+
+```bash
+cat /etc/group
+```
+
+Example:
+
+```text
+developers:x:1001:alice,bob
+```
+
+---
+
+## Q189. What is the difference between `/etc/passwd` and `/etc/shadow`?
+
+**Answer:**
+
+```text
+/etc/passwd
+    ↓
+Basic user account information
+
+/etc/shadow
+    ↓
+Password and authentication-related information
+```
+
+The `/etc/shadow` file is more restricted because it contains sensitive authentication information.
+
+---
+
+## Q190. What is the difference between `/etc/passwd` and `/etc/group`?
+
+**Answer:**
+
+```text
+/etc/passwd
+    ↓
+Stores user account information
+
+/etc/group
+    ↓
+Stores group information
+```
+
+---
+
+# ⭐ Primary and Secondary Groups
+
+## Q191. What is a primary group?
+
+**Answer:**
+
+A primary group is the default group associated with a user.
+
+It is represented by the user's GID.
+
+Example:
+
+```bash
+id alice
+```
+
+Output may contain:
+
+```text
+uid=1001(alice) gid=1001(developers)
+```
+
+Here:
+
+```text
+Primary Group = developers
+```
+
+---
+
+## Q192. What are secondary groups?
+
+**Answer:**
+
+Secondary groups are additional groups that a user belongs to.
+
+Example:
+
+```text
+User: Alice
+
+Primary Group:
+developers
+
+Secondary Groups:
+docker
+sudo
+```
+
+Check using:
+
+```bash
+groups alice
+```
+
+---
+
+## Q193. What is the difference between primary and secondary groups?
+
+**Answer:**
+
+```text
+Primary Group
+    ↓
+Default group associated with the user
+
+Secondary Groups
+    ↓
+Additional groups the user belongs to
+```
+
+A user can have multiple secondary groups.
+
+---
+
+# ➕ User Management
+
+## Q194. How do you create a user?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo useradd alice
+```
+
+To create a user with a home directory:
+
+```bash
+sudo useradd -m alice
+```
+
+---
+
+## Q195. What is the difference between `useradd` and `adduser`?
+
+**Answer:**
+
+`useradd` is a lower-level command used to create users.
+
+```bash
+sudo useradd alice
+```
+
+`adduser` is generally a more interactive utility available on many Debian-based systems.
+
+```bash
+sudo adduser alice
+```
+
+`adduser` may guide you through additional configuration such as:
+
+- Password
+- Full name
+- User information
+
+---
+
+## Q196. How do you set a user's password?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo passwd alice
+```
+
+---
+
+## Q197. How do you modify a user?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo usermod
+```
+
+Example:
+
+```bash
+sudo usermod -s /bin/bash alice
+```
+
+This changes the user's login shell.
+
+---
+
+## Q198. How do you add a user to a secondary group?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo usermod -aG developers alice
+```
+
+Where:
+
+```text
+-a → Append
+-G → Supplementary / secondary group
+```
+
+Verify:
+
+```bash
+groups alice
+```
+
+---
+
+## Q199. Why is the `-a` option important in `usermod -aG`?
+
+**Answer:**
+
+The `-a` option means **append**.
+
+It ensures that the user is added to the new group without removing the user from existing supplementary groups.
+
+Example:
+
+```bash
+sudo usermod -aG developers alice
+```
+
+Without `-a`, existing supplementary group memberships may be replaced.
+
+---
+
+## Q200. How do you remove a user from a group?
+
+**Answer:**
+
+One common command is:
+
+```bash
+sudo gpasswd -d alice developers
+```
+
+Verify:
+
+```bash
+groups alice
+```
+
+---
+
+## Q201. How do you delete a user?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo userdel alice
+```
+
+To also remove the user's home directory:
+
+```bash
+sudo userdel -r alice
+```
+
+⚠️ The `-r` option can permanently remove the user's home directory and data.
+
+---
+
+# 👥 Group Management
+
+## Q202. How do you create a group?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo groupadd developers
+```
+
+Verify:
+
+```bash
+getent group developers
+```
+
+---
+
+## Q203. How do you rename a group?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo groupmod -n programmers developers
+```
+
+This changes:
+
+```text
+developers
+    ↓
+programmers
+```
+
+---
+
+## Q204. How do you delete a group?
+
+**Answer:**
+
+Use:
+
+```bash
+sudo groupdel developers
+```
+
+Make sure the group is no longer required before deleting it.
+
+---
+
+# 🛡️ sudo and Privileges
+
+## Q205. What is `sudo`?
+
+**Answer:**
+
+`sudo` allows an authorized user to execute a command with elevated privileges.
+
+Example:
+
+```bash
+sudo apt update
+```
+
+It provides elevated privileges for the specific command rather than requiring the user to operate as root all the time.
+
+---
+
+## Q206. Why is `sudo` preferred over logging in as root?
+
+**Answer:**
+
+Using `sudo` is generally safer because:
+
+- Privileges can be limited
+- Commands can be audited
+- The user does not need to remain in a root shell
+- Accidental administrative actions are reduced
+
+It follows the principle of least privilege more closely.
+
+---
+
+## Q207. What is the difference between `sudo` and `su`?
+
+**Answer:**
+
+```text
+sudo
+ ↓
+Run a specific command with elevated privileges
+
+su
+ ↓
+Switch to another user account
+```
+
+Example:
+
+```bash
+sudo apt update
+```
+
+Switch to root:
+
+```bash
+su -
+```
+
+---
+
+# 🧩 Scenario-Based Questions
+
+## Q208. A user needs access to the `developers` group. What command would you use?
+
+**Answer:**
+
+```bash
+sudo usermod -aG developers username
+```
+
+Then verify:
+
+```bash
+groups username
+```
+
+---
+
+## Q209. A user was added to a group, but the group does not appear in the current session. What could be the reason?
+
+**Answer:**
+
+The current login session may not have refreshed the user's group membership.
+
+The user may need to:
+
+- Log out and log back in
+- Start a new session
+- Use an appropriate command such as `newgrp` when suitable
+
+Verify membership using:
+
+```bash
+id username
+```
+
+---
+
+## Q210. You need to create a user with a home directory. What command would you use?
+
+**Answer:**
+
+```bash
+sudo useradd -m username
+```
+
+---
+
+## Q211. You need to create a user and set a password. What commands can you use?
+
+**Answer:**
+
+```bash
+sudo useradd -m alice
+```
+
+Then:
+
+```bash
+sudo passwd alice
+```
+
+Alternatively, on systems supporting it:
+
+```bash
+sudo adduser alice
+```
+
+---
+
+## Q212. How would you check whether a user exists?
+
+**Answer:**
+
+You can use:
+
+```bash
+id username
+```
+
+Or:
+
+```bash
+getent passwd username
+```
+
+---
+
+## Q213. How would you check whether a group exists?
+
+**Answer:**
+
+Use:
+
+```bash
+getent group groupname
+```
+
+---
+
+## Q214. A user should have access to Docker without using `sudo` for every Docker command. What would you investigate?
+
+**Answer:**
+
+I would first check whether the system uses a `docker` group and whether the user is a member of it.
+
+For example:
+
+```bash
+groups username
+```
+
+If appropriate:
+
+```bash
+sudo usermod -aG docker username
+```
+
+The user may need to start a new login session for the membership change to take effect.
+
+I would also consider the security implications because membership in privileged groups can provide significant access.
+
+---
+
+## Q215. A user has UID 0 but is not named `root`. What does this mean?
+
+**Answer:**
+
+UID `0` represents the superuser identity.
+
+A user account with UID `0` effectively has root-level privileges, regardless of the username.
+
+This should be treated as a serious security concern unless intentionally configured.
+
+---
+
+## Q216. What happens if you delete a user with `userdel -r`?
+
+**Answer:**
+
+The user account is removed and the user's home directory and associated local mail files may also be removed.
+
+Example:
+
+```bash
+sudo userdel -r alice
+```
+
+This should be used carefully because user data may be permanently deleted.
+
+---
+
+## Q217. Why should unused user accounts be removed or disabled?
+
+**Answer:**
+
+Unused accounts increase the attack surface.
+
+Removing or disabling unnecessary accounts helps:
+
+- Reduce unauthorized access
+- Improve security
+- Simplify account management
+- Follow least privilege principles
+
+---
+
+## Q218. Why should `/etc/shadow` be protected?
+
+**Answer:**
+
+`/etc/shadow` contains sensitive password and authentication-related information.
+
+Unauthorized access could help attackers attempt password cracking or other attacks.
+
+Therefore, access should be restricted.
+
+---
+
+# 🔥 Advanced Interview Questions
+
+## Q219. What is the relationship between UID and username?
+
+**Answer:**
+
+The username is a human-readable identity, while the UID is the numeric identity used internally by the Linux system.
+
+Example:
+
+```text
+Username:
+alice
+
+UID:
+1001
+```
+
+Linux processes and file ownership are ultimately associated with numeric IDs.
+
+---
+
+## Q220. What is the relationship between GID and group name?
+
+**Answer:**
+
+The group name is the human-readable name, while the GID is the numeric identifier used internally.
+
+Example:
+
+```text
+Group:
+developers
+
+GID:
+1001
+```
+
+---
+
+## Q221. How does Linux identify file ownership?
+
+**Answer:**
+
+Linux associates files with:
+
+```text
+User ID (UID)
+Group ID (GID)
+```
+
+When displayed using commands such as:
+
+```bash
+ls -l
+```
+
+the system typically shows the corresponding usernames and group names.
+
+---
+
+## Q222. What happens if a user is deleted but their files remain?
+
+**Answer:**
+
+The files may still exist and retain the numeric UID of the deleted user as the file owner.
+
+The username may no longer resolve to that UID.
+
+You can inspect numeric ownership using:
+
+```bash
+ls -ln
+```
+
+---
+
+## Q223. What is the purpose of `getent`?
+
+**Answer:**
+
+`getent` retrieves entries from configured system databases.
+
+Examples:
+
+```bash
+getent passwd username
+```
+
+```bash
+getent group developers
+```
+
+It is useful for checking user and group information through the system's configured name service sources.
+
+---
+
+## Q224. What is the principle of least privilege in user management?
+
+**Answer:**
+
+The principle of least privilege means giving users only the access and privileges they need to perform their tasks.
+
+For example:
+
+```text
+Normal User
+    ↓
+Normal Permissions
+
+Administrative Task
+    ↓
+Use sudo when authorized
+
+No Need for Root
+    ↓
+Do not grant Root Access
+```
+
+---
+
+# ⚡ Rapid-Fire Revision
+
+| Question | Answer |
+|---|---|
+| User identifier | UID |
+| Group identifier | GID |
+| Root UID | `0` |
+| Current user | `whoami` |
+| User identity | `id` |
+| User groups | `groups` |
+| Logged-in users | `who` |
+| Detailed logged-in users | `w` |
+| Usernames currently logged in | `users` |
+| Basic user database | `/etc/passwd` |
+| Password database | `/etc/shadow` |
+| Group database | `/etc/group` |
+| Create user | `useradd` |
+| Interactive user creation | `adduser` |
+| Modify user | `usermod` |
+| Delete user | `userdel` |
+| Create group | `groupadd` |
+| Modify group | `groupmod` |
+| Delete group | `groupdel` |
+| Set password | `passwd` |
+| Execute as authorized elevated user | `sudo` |
+| Primary group | User's default group |
+| Secondary groups | Additional groups |
+| Check user existence | `id username` |
+| Check group existence | `getent group groupname` |
+
+---
+
+# 🎯 Interview Checklist — Lesson 06
+
+- [ ] Explain Linux users
+- [ ] Explain Linux groups
+- [ ] Explain UID
+- [ ] Explain GID
+- [ ] Explain root user
+- [ ] Explain UID 0
+- [ ] Use `whoami`
+- [ ] Use `id`
+- [ ] Use `who`
+- [ ] Use `w`
+- [ ] Use `users`
+- [ ] Use `groups`
+- [ ] Explain `/etc/passwd`
+- [ ] Explain `/etc/shadow`
+- [ ] Explain `/etc/group`
+- [ ] Explain primary groups
+- [ ] Explain secondary groups
+- [ ] Create users with `useradd`
+- [ ] Understand `adduser`
+- [ ] Modify users with `usermod`
+- [ ] Add users to groups
+- [ ] Remove users from groups
+- [ ] Delete users safely
+- [ ] Create groups
+- [ ] Modify groups
+- [ ] Delete groups
+- [ ] Understand `sudo`
+- [ ] Understand `sudo` vs `su`
+- [ ] Understand least privilege
+- [ ] Solve user-management scenarios
+- [ ] Solve group-management scenarios
+
+---
+
+# 🧠 Quick Interview Revision
+
+```text
+USER
+  │
+  ├── UID
+  │
+  ├── Primary Group
+  │
+  ├── Secondary Groups
+  │
+  └── Home Directory
+
+GROUP
+  │
+  └── GID
+
+ROOT
+  │
+  └── UID 0
+
+/etc/passwd
+  │
+  └── User Account Information
+
+/etc/shadow
+  │
+  └── Password / Authentication Information
+
+/etc/group
+  │
+  └── Group Information
+
+sudo
+  │
+  └── Controlled Elevated Privileges
+```
+
+---
+
+# 🏆 Lesson 06 Interview Goal
+
+By the end of this section, you should be able to confidently answer:
+
+> **"How does Linux manage users, groups, identities, and privileges?"**
+
+A strong answer:
+
+```text
+Linux identifies users using UIDs and groups using GIDs.
+User account information is maintained through system databases
+such as /etc/passwd, while password-related information is stored
+in /etc/shadow and group information in /etc/group.
+
+Users can have a primary group and multiple secondary groups.
+Administrators can create and manage users and groups using commands
+such as useradd, usermod, userdel, groupadd, groupmod, and groupdel.
+
+For administrative operations, authorized users can use sudo to
+execute commands with elevated privileges while following the
+principle of least privilege.
+```
+
+---
+
+## 🔗 Related Resources
+
+📖 [Lesson 06 — Linux Users & Groups](../levels/level-02-file-system/06-linux-users-and-groups.md)
+
+🖼️ [Linux Users & Groups Diagram](../assets/diagrams/linux-users-and-groups.md)
+
+🧪 [Linux Users & Groups Lab](../labs/06-linux-users-and-groups-lab.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 06 Interview Preparation**
+
+> *Understand identities. Manage users. Control privileges. Secure the system.*
