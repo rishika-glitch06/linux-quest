@@ -4287,3 +4287,53 @@ principle of least privilege.
 > 🐧 **Linux Quest — Level 02, Lesson 06 Interview Preparation**
 
 > *Understand identities. Manage users. Control privileges. Secure the system.*
+
+# 🐧 Linux Quest — Level 02
+# Linux File System — Interview Preparation
+
+> Common Linux File System interview questions with concise, interview-ready answers.
+
+---
+
+## 🟢 Basic Questions
+
+### 1. What is a file system in Linux?
+
+A file system is the method Linux uses to organize, store, manage, and access files and directories on storage devices.
+
+Examples include:
+
+- ext4
+- XFS
+- Btrfs
+- FAT32
+- NTFS
+
+---
+
+### 2. What is the Linux file system hierarchy?
+
+Linux follows a hierarchical directory structure starting from the root directory `/`.
+
+Important directories include:
+
+```text
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin
+├── srv
+├── sys
+├── tmp
+├── usr
+└── var
