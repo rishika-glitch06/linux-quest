@@ -250,3 +250,64 @@ Learn how Linux manages users, groups, identities, authentication files, and adm
 ➡️ **Next:** Lesson 07 — Process Management (Coming Soon)
 
 ---
+
+---
+
+## 📖 Lesson 07 — Linux File System
+
+Learn how Linux organizes, stores, and manages files, directories, partitions, and file systems.
+
+### 📚 Topics Covered
+
+- Linux File System Hierarchy
+- Root Directory `/`
+- `/home`
+- `/etc`
+- `/var`
+- `/tmp`
+- `/dev`
+- `/proc`
+- `/sys`
+- `/boot`
+- Absolute and Relative Paths
+- Hidden Files
+- Partitions
+- File Systems
+- ext4
+- Mount Points
+- Mount and Unmount
+- `/etc/fstab`
+- UUID
+- Disk Usage
+- `df`
+- `du`
+- `lsblk`
+- Block Devices
+- Inodes
+- VFS
+- Symbolic Links
+- Hard Links
+- Disk Space Troubleshooting
+
+### 🖼️ Visual Learning
+
+📊 [Linux File System Diagram](../../assets/diagrams/linux-file-system.md)
+
+### 💼 Interview Preparation
+
+🎯 [Linux File System Interview Questions](../../interview-prep/linux-file-system-interview.md)
+
+### 🧪 Hands-on Lab
+
+🔬 [Linux File System Lab](../../labs/07-linux-file-system-lab.md)
+
+### ✅ Progress
+
+- [x] Lesson 07 — Linux File System
+- [x] Diagram
+- [x] Interview Preparation
+- [x] Hands-on Lab
+
+**Status: 🟢 Complete**
+
+---
