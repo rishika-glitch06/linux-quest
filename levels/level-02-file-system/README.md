@@ -311,3 +311,46 @@ Learn how Linux organizes, stores, and manages files, directories, partitions, a
 **Status: 🟢 Complete**
 
 ---
+## 🟢 Lesson 08 — Linux File Permissions & Ownership
+
+### 📖 Main Content
+[Read Lesson 08 — Linux File Permissions & Ownership](08-linux-file-permissions.md)
+
+### 📊 Diagram
+[View Linux File Permissions Diagram](../../assets/diagrams/linux-file-permissions.md)
+
+### 🧪 Hands-on Lab
+[Complete Linux File Permissions Lab](../../labs/08-linux-file-permissions-lab.md)
+
+### 🎯 Interview Preparation
+[Practice Linux File System Interview Questions](../../interview-prep/linux-file-system.md)
+
+### ✅ Topics Covered
+
+- User, Group, and Others
+- Read, Write, and Execute Permissions
+- File Permissions
+- Directory Permissions
+- `ls -l`
+- Numeric Permissions
+- Symbolic Permissions
+- `chmod`
+- `chown`
+- `chgrp`
+- File Ownership
+- Group Ownership
+- `umask`
+- SUID
+- SGID
+- Sticky Bit
+- Permission Denied Troubleshooting
+- Principle of Least Privilege
+
+### 📊 Lesson 08 Progress
+
+Theory              → 🟢 Complete
+Diagram             → 🟢 Complete
+Hands-on Lab        → 🟢 Complete
+Interview Prep      → 🟢 Complete
+
+Status: 🟢 Complete
