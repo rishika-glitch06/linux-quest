@@ -5178,3 +5178,1191 @@ Interview Prep       → 🟢 Complete
 Hands-on Lab         → ⬜
 README               → ⬜
 Git Commits          → ⬜
+
+# 🐧 Linux Interview Preparation — Lesson 09
+# 🔗 Linux File Links: Hard Links & Symbolic Links
+
+> This chapter covers Inodes, Hard Links, Symbolic Links, Link Counts, Broken Symlinks, Filesystem Boundaries, and Interview Questions.
+
+---
+
+# 1. What is a Link in Linux?
+
+A link in Linux is a way to create another reference to a file.
+
+Linux mainly provides two types of links:
+
+1. Hard Link
+2. Symbolic Link (Soft Link)
+
+                    LINUX LINKS
+                         │
+                ┌────────┴────────┐
+                │                 │
+                ▼                 ▼
+           HARD LINK        SYMBOLIC LINK
+                │                 │
+                ▼                 ▼
+           Same Inode        Stores Path
+                │                 │
+                ▼                 ▼
+           Same Data         Target File
+
+---
+
+# 2. What is an Inode?
+
+An inode is a data structure maintained by the Linux filesystem that stores metadata about a file.
+
+An inode generally contains:
+
+- File type
+- File permissions
+- Owner UID
+- Group GID
+- File size
+- Timestamps
+- Number of hard links
+- Pointers to data blocks
+
+An inode does NOT normally store the filename.
+
+The filename is stored in a directory entry that maps the filename to the inode number.
+
+    Filename
+        │
+        ▼
+    Directory Entry
+        │
+        ▼
+    Inode
+        │
+        ├── Permissions
+        ├── Owner
+        ├── Group
+        ├── Size
+        ├── Timestamps
+        ├── Link Count
+        │
+        ▼
+    Data Blocks
+
+### Interview Answer
+
+> An inode is a filesystem data structure that stores metadata and pointers to a file's data blocks. The filename itself is stored in the directory entry, which maps the filename to the inode.
+
+---
+
+# 3. What is a Hard Link?
+
+A hard link is an additional directory entry that points directly to the same inode as the original file.
+
+    original.txt ───────┐
+                        │
+                        ▼
+                    Inode #1234
+                        │
+                        ▼
+                    File Data
+                        ▲
+                        │
+    hardlink.txt ───────┘
+
+Create a hard link:
+
+    ln original.txt hardlink.txt
+
+Check inode numbers:
+
+    ls -li original.txt hardlink.txt
+
+Both files should show the same inode number.
+
+### Important Point
+
+A hard link is NOT a copy of the file.
+
+Both filenames point to the same underlying inode and data.
+
+---
+
+# 4. What is a Symbolic Link?
+
+A symbolic link, also called a soft link, is a special file that stores the path to another file or directory.
+
+    symlink.txt
+          │
+          ▼
+    "original.txt"
+          │
+          ▼
+    original.txt
+          │
+          ▼
+        Inode
+          │
+          ▼
+      File Data
+
+Create a symbolic link:
+
+    ln -s original.txt symlink.txt
+
+View the link:
+
+    ls -l symlink.txt
+
+Example:
+
+    symlink.txt -> original.txt
+
+### Important Point
+
+A symbolic link has its own inode and stores the path of the target.
+
+---
+
+# 5. Hard Link vs Symbolic Link
+
+| Feature | Hard Link | Symbolic Link |
+|---|---|---|
+| Points to | Inode | File path |
+| Inode | Same as target | Different inode |
+| File data | Same | Accesses target data |
+| Can point to directory | Normally no | Yes |
+| Cross filesystem | Generally no | Yes |
+| Can become broken | No | Yes |
+| Target deleted | Link still works if another hard link exists | Link becomes broken |
+| Command | ln | ln -s |
+| Inode check | Same inode | Different inode |
+
+### Easy Way to Remember
+
+    HARD LINK
+        ↓
+    Same Inode
+        ↓
+    Same Data
+
+    SYMBOLIC LINK
+        ↓
+    Stores Path
+        ↓
+    Points to Target
+
+---
+
+# 6. What Happens When You Delete the Original File?
+
+Suppose:
+
+    original.txt ───────┐
+                        ▼
+                    Inode #1234
+                        ▲
+                        │
+    hardlink.txt ───────┘
+
+Now run:
+
+    rm original.txt
+
+Result:
+
+    original.txt ❌
+
+    hardlink.txt
+          │
+          ▼
+    Inode #1234
+          │
+          ▼
+      File Data
+
+The hard link still works.
+
+Why?
+
+Because the inode still has another directory entry pointing to it.
+
+The actual data is removed only when:
+
+1. The hard link count becomes zero.
+2. No process is keeping the file open.
+
+### Interview Answer
+
+> Deleting the original filename does not delete the actual file data if another hard link still exists. The inode remains accessible through the remaining hard link.
+
+---
+
+# 7. What Happens When You Delete the Target of a Symbolic Link?
+
+Suppose:
+
+    symlink.txt
+          │
+          ▼
+    original.txt
+          │
+          ▼
+      File Data
+
+Delete the target:
+
+    rm original.txt
+
+Now:
+
+    symlink.txt
+          │
+          ▼
+    original.txt ❌
+          │
+          X
+    Target Missing
+
+The symbolic link becomes a broken or dangling symlink.
+
+### Interview Answer
+
+> A symbolic link stores a path, not the actual inode reference. If its target is deleted or moved, the symbolic link becomes dangling or broken.
+
+---
+
+# 8. What is a Broken or Dangling Symlink?
+
+A broken symbolic link is a symbolic link whose target path no longer exists.
+
+Example:
+
+    symlink.txt
+          │
+          ▼
+    /home/user/original.txt
+          │
+          X
+    File does not exist
+
+Find broken symlinks:
+
+    find . -xtype l
+
+---
+
+# 9. How Do You Check Whether Two Files Are Hard Links?
+
+Use inode numbers:
+
+    ls -li file1 file2
+
+Example output:
+
+    12345 -rw-r--r-- 2 user user 100 Jul 30 file1
+    12345 -rw-r--r-- 2 user user 100 Jul 30 file2
+
+Both have inode:
+
+    12345
+
+Therefore, they are hard links to the same underlying file.
+
+### Interview Answer
+
+> I can compare the inode numbers using ls -li. If two filenames have the same inode number on the same filesystem, they refer to the same underlying file through hard links.
+
+---
+
+# 10. How Do You Identify a Symbolic Link?
+
+Use:
+
+    ls -l
+
+Example:
+
+    lrwxrwxrwx 1 user user 12 Jul 30 symlink.txt -> original.txt
+
+The first character is:
+
+    l
+
+which indicates a symbolic link.
+
+You can also use:
+
+    readlink symlink.txt
+
+Output:
+
+    original.txt
+
+---
+
+# 11. What Does the First Character in ls -l Mean?
+
+Example:
+
+    lrwxrwxrwx
+
+The first character represents the file type.
+
+Common types:
+
+    -   Regular file
+    d   Directory
+    l   Symbolic link
+    c   Character device
+    b   Block device
+    s   Socket
+    p   Named pipe
+
+Examples:
+
+    -rw-r--r--   → Regular file
+    drwxr-xr-x   → Directory
+    lrwxrwxrwx   → Symbolic link
+
+---
+
+# 12. Why Do Hard Links Share the Same Inode?
+
+A hard link is simply another directory entry pointing to the same inode.
+
+    Directory Entry 1
+          │
+          ▼
+      Inode #100
+          │
+          ▼
+      File Data
+          ▲
+          │
+    Directory Entry 2
+
+Therefore:
+
+    file1 ──► Inode 100
+    file2 ──► Inode 100
+
+Both represent the same underlying file.
+
+---
+
+# 13. Why Can't Hard Links Usually Cross Filesystems?
+
+An inode belongs to a specific filesystem.
+
+A hard link directly references an inode.
+
+Therefore, a hard link generally cannot point to an inode belonging to another filesystem.
+
+    Filesystem A
+         │
+         ▼
+      Inode 1234
+         ▲
+         │
+      Hard Link
+         │
+         X
+    Filesystem B
+
+This may fail with:
+
+    Invalid cross-device link
+
+Symbolic links do not have this limitation because they store paths.
+
+---
+
+# 14. Can a Symbolic Link Cross Filesystems?
+
+Yes.
+
+A symbolic link stores a path.
+
+For example:
+
+    Filesystem A
+
+    symlink.txt
+          │
+          │ /mnt/data/file.txt
+          ▼
+
+    Filesystem B
+
+    file.txt
+
+Because the symlink stores a pathname, it can point to a file located on another filesystem.
+
+---
+
+# 15. Can You Create Hard Links to Directories?
+
+Normally, no.
+
+Regular users cannot create hard links to directories.
+
+This restriction helps prevent filesystem cycles and maintains filesystem consistency.
+
+    Hard Link → Regular File ✅
+
+    Hard Link → Directory ❌ Normally Not Allowed
+
+The special entries:
+
+    .
+    ..
+
+are filesystem-managed directory links and are not normal user-created hard links.
+
+---
+
+# 16. Can Symbolic Links Point to Directories?
+
+Yes.
+
+Example:
+
+    ln -s /var/log logs
+
+Now:
+
+    logs
+      │
+      ▼
+    /var/log
+
+You can access the directory using:
+
+    cd logs
+
+Symbolic links can point to:
+
+- Regular files
+- Directories
+- Other symbolic links
+- Absolute paths
+- Relative paths
+
+---
+
+# 17. Difference Between ln and ln -s
+
+### ln
+
+Creates a hard link by default.
+
+    ln source target
+
+Relationship:
+
+    source ─────┐
+                ▼
+             Same Inode
+                ▲
+                │
+    target ─────┘
+
+### ln -s
+
+Creates a symbolic link.
+
+    ln -s source target
+
+Relationship:
+
+    target
+       │
+       ▼
+    Path to source
+       │
+       ▼
+    source
+
+### Interview Answer
+
+> ln creates a hard link by default, while ln -s creates a symbolic link.
+
+---
+
+# 18. What is Link Count?
+
+The link count is the number of directory entries that reference an inode through hard links.
+
+Example:
+
+    original.txt ───────┐
+                        │
+    hardlink.txt ───────┼──► Inode #1234
+                        │
+    backup.txt ─────────┘
+
+The inode link count is:
+
+    3
+
+Check using:
+
+    ls -l
+
+Example:
+
+    -rw-r--r-- 3 user user 100 file.txt
+
+The number 3 represents the hard link count.
+
+---
+
+# 19. What Happens to Link Count When a Hard Link Is Created?
+
+Initially:
+
+    original.txt
+         │
+         ▼
+       Inode
+    Link Count = 1
+
+Create:
+
+    ln original.txt hardlink.txt
+
+Now:
+
+    original.txt ───────┐
+                        ▼
+                    Inode
+                Link Count = 2
+                        ▲
+                        │
+    hardlink.txt ───────┘
+
+The link count increases by one.
+
+---
+
+# 20. What Happens to Link Count When a Hard Link Is Deleted?
+
+Suppose:
+
+    original.txt ───────┐
+                        ▼
+                    Inode
+                Link Count = 2
+                        ▲
+                        │
+    hardlink.txt ───────┘
+
+Run:
+
+    rm hardlink.txt
+
+Now:
+
+    original.txt
+         │
+         ▼
+       Inode
+    Link Count = 1
+
+The link count decreases by one.
+
+When the link count reaches zero and no process has the file open, the filesystem can reclaim the inode and data blocks.
+
+---
+
+# 21. Hard Link Deletion vs File Data Deletion
+
+Important concept:
+
+    rm original.txt
+
+does not necessarily mean:
+
+    Delete File Data Immediately
+
+Instead, it removes a directory entry.
+
+Before:
+
+    original.txt ───────┐
+                        ▼
+                    Inode
+                Link Count = 2
+                        ▲
+                        │
+    hardlink.txt ───────┘
+
+After:
+
+    rm original.txt
+
+    original.txt ❌
+
+    hardlink.txt
+          │
+          ▼
+        Inode
+    Link Count = 1
+          │
+          ▼
+    File Data Still Exists
+
+---
+
+# 22. Removing a Symlink vs Removing Its Target
+
+Suppose:
+
+    symlink.txt
+          │
+          ▼
+    original.txt
+
+Run:
+
+    rm symlink.txt
+
+Result:
+
+    symlink.txt ❌
+    original.txt ✅
+
+Only the symlink is removed.
+
+The target remains.
+
+If you run:
+
+    rm original.txt
+
+Result:
+
+    original.txt ❌
+    symlink.txt 💔
+
+The symlink remains but becomes broken.
+
+---
+
+# 23. Absolute vs Relative Symbolic Links
+
+A symbolic link can contain an absolute or relative path.
+
+### Absolute Symlink
+
+    ln -s /home/user/project/file.txt link.txt
+
+The link points to:
+
+    /home/user/project/file.txt
+
+### Relative Symlink
+
+    ln -s ../project/file.txt link.txt
+
+The link uses a relative path.
+
+### Interview Tip
+
+Relative symbolic links can be useful when moving an entire directory structure because the relationship between files remains relative.
+
+---
+
+# 24. Common Commands for Links
+
+Create hard link:
+
+    ln source target
+
+Create symbolic link:
+
+    ln -s source target
+
+List links:
+
+    ls -l
+
+Show inode numbers:
+
+    ls -li
+
+Show symlink target:
+
+    readlink link
+
+Resolve full symlink path:
+
+    readlink -f link
+
+Find symbolic links:
+
+    find . -type l
+
+Find broken symbolic links:
+
+    find . -xtype l
+
+View metadata:
+
+    stat file
+
+---
+
+# 25. Common Interview Questions
+
+## Q1. What is an inode?
+
+### Answer
+
+> An inode is a filesystem data structure that stores metadata about a file and pointers to its data blocks. It does not normally store the filename.
+
+## Q2. What is a hard link?
+
+### Answer
+
+> A hard link is another directory entry that points to the same inode as an existing file. Both names refer to the same underlying file data.
+
+## Q3. What is a symbolic link?
+
+### Answer
+
+> A symbolic link is a special file that stores the pathname of another file or directory.
+
+## Q4. What happens if the original file is deleted but a hard link exists?
+
+### Answer
+
+> The hard link continues to work because it points to the same inode. The data remains accessible until the last hard link is removed and no process is keeping the file open.
+
+## Q5. What happens if the target of a symbolic link is deleted?
+
+### Answer
+
+> The symbolic link becomes a broken or dangling symbolic link because its stored target path no longer exists.
+
+## Q6. How do you identify a hard link?
+
+### Answer
+
+> Compare inode numbers using ls -li. If two filenames have the same inode number on the same filesystem, they are hard links to the same file.
+
+## Q7. How do you identify a symbolic link?
+
+### Answer
+
+> Use ls -l. A symbolic link starts with l in the file type field and displays an arrow pointing to its target.
+
+## Q8. Can hard links cross filesystems?
+
+### Answer
+
+> Generally no, because a hard link directly references an inode, and an inode belongs to a specific filesystem.
+
+## Q9. Can symbolic links cross filesystems?
+
+### Answer
+
+> Yes. Symbolic links store paths, so the target can exist on another filesystem.
+
+## Q10. Can hard links point to directories?
+
+### Answer
+
+> Normally no for regular users. Filesystem-managed directory links such as . and .. are special cases.
+
+## Q11. Can symbolic links point to directories?
+
+### Answer
+
+> Yes. Symbolic links can point to both regular files and directories.
+
+## Q12. What is a dangling symlink?
+
+### Answer
+
+> A dangling symlink is a symbolic link whose target path no longer exists.
+
+## Q13. What is the difference between ln and ln -s?
+
+### Answer
+
+> ln creates a hard link by default, while ln -s creates a symbolic link.
+
+## Q14. What is link count?
+
+### Answer
+
+> Link count represents the number of hard-link directory entries referencing an inode.
+
+## Q15. What happens when the link count reaches zero?
+
+### Answer
+
+> When no hard links reference an inode and no process has the file open, the filesystem can reclaim the inode and associated data blocks.
+
+---
+
+# 26. Scenario-Based Interview Questions
+
+## Scenario 1
+
+You have:
+
+    file.txt
+    hard.txt
+
+Both have the same inode number.
+
+What does it mean?
+
+### Answer
+
+They are hard links to the same underlying file.
+
+---
+
+## Scenario 2
+
+You delete file.txt, but hard.txt still exists.
+
+What happens?
+
+### Answer
+
+hard.txt continues to work because it still references the same inode.
+
+---
+
+## Scenario 3
+
+You have:
+
+    link.txt -> file.txt
+
+You delete file.txt.
+
+What happens?
+
+### Answer
+
+link.txt becomes a dangling symbolic link.
+
+---
+
+## Scenario 4
+
+You need a link to a directory.
+
+Which link should you use?
+
+### Answer
+
+Use a symbolic link.
+
+    ln -s directory link
+
+---
+
+## Scenario 5
+
+You need a link across two filesystems.
+
+Which type should you use?
+
+### Answer
+
+Use a symbolic link because hard links generally cannot cross filesystem boundaries.
+
+---
+
+## Scenario 6
+
+You want to deploy multiple application versions and have one stable path point to the active version.
+
+What would you use?
+
+### Answer
+
+A symbolic link.
+
+Example:
+
+    current -> releases/v3
+
+When deploying v4:
+
+    current -> releases/v4
+
+This allows the application to use a stable path while changing the active version.
+
+---
+
+# 27. 🧪 Mini Practical Interview Task
+
+Run the following commands:
+
+    mkdir link-demo
+    cd link-demo
+
+Create a file:
+
+    echo "Linux Quest" > original.txt
+
+Create hard link:
+
+    ln original.txt hardlink.txt
+
+Create symbolic link:
+
+    ln -s original.txt symlink.txt
+
+Check:
+
+    ls -li
+
+Expected concept:
+
+    original.txt  → Same inode
+    hardlink.txt  → Same inode
+    symlink.txt   → Different inode
+
+Now delete original:
+
+    rm original.txt
+
+Check hard link:
+
+    cat hardlink.txt
+
+Expected:
+
+    Linux Quest
+
+Check symbolic link:
+
+    cat symlink.txt
+
+Expected:
+
+    No such file or directory
+
+Why?
+
+    Hard Link
+        ↓
+    Same inode
+        ↓
+    Data still exists
+
+    Symbolic Link
+        ↓
+    Target path deleted
+        ↓
+    Broken link
+
+---
+
+# 28. 🧠 Interview Cheat Sheet
+
+    INODE
+    ↓
+    Stores file metadata
+    ↓
+    Does not normally store filename
+
+
+    HARD LINK
+    ↓
+    Points to same inode
+    ↓
+    Same data
+    ↓
+    Same inode number
+    ↓
+    Usually same filesystem
+    ↓
+    Cannot normally point to directories
+    ↓
+    Survives deletion of another filename
+
+
+    SYMBOLIC LINK
+    ↓
+    Stores target path
+    ↓
+    Different inode
+    ↓
+    Can point to files/directories
+    ↓
+    Can cross filesystems
+    ↓
+    Can become broken
+
+---
+
+# 29. ⭐ One-Line Answers for Rapid Revision
+
+**What is an inode?**
+
+> A filesystem structure containing file metadata and pointers to data blocks.
+
+**What is a hard link?**
+
+> Another filename pointing to the same inode.
+
+**What is a symbolic link?**
+
+> A special file storing the path of another file or directory.
+
+**Hard link command?**
+
+> ln source target
+
+**Symbolic link command?**
+
+> ln -s source target
+
+**How to check inode?**
+
+> ls -li
+
+**How to check symbolic link?**
+
+> ls -l
+
+**Can hard links cross filesystems?**
+
+> Generally no.
+
+**Can symbolic links cross filesystems?**
+
+> Yes.
+
+**Can hard links point to directories?**
+
+> Normally no for users.
+
+**Can symbolic links point to directories?**
+
+> Yes.
+
+**What is a dangling symlink?**
+
+> A symlink whose target no longer exists.
+
+**What happens when a hard link is deleted?**
+
+> The link count decreases; data remains if another hard link exists.
+
+**What happens when a symlink target is deleted?**
+
+> The symlink becomes broken.
+
+---
+
+# 30. 🎯 Interviewer Trap Questions
+
+### Trap 1: Is a hard link a copy of a file?
+
+❌ No.
+
+A hard link is not a copy.
+
+It is another directory entry pointing to the same inode.
+
+### Trap 2: Does deleting the original filename always delete the file?
+
+❌ No.
+
+If hard links still exist, the file data remains accessible.
+
+### Trap 3: Is a symbolic link the same as a shortcut in Windows?
+
+Conceptually similar, but technically a Linux symbolic link is a filesystem object that stores a pathname.
+
+### Trap 4: Do hard links have different inodes?
+
+❌ No.
+
+Hard links to the same file share the same inode.
+
+### Trap 5: Does a symbolic link have an inode?
+
+✅ Yes.
+
+The symbolic link itself has its own inode, which is different from the target's inode.
+
+### Trap 6: Can a symbolic link point to another symbolic link?
+
+✅ Yes.
+
+The system follows the chain until it reaches the final target or encounters an error.
+
+---
+
+# 31. 🏆 Final Interview Summary
+
+                    LINUX FILE LINKS
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+             ▼                           ▼
+        HARD LINK                  SYMBOLIC LINK
+             │                           │
+             ▼                           ▼
+        SAME INODE                  OWN INODE
+             │                           │
+             ▼                           ▼
+        SAME DATA                  STORES PATH
+             │                           │
+             ▼                           ▼
+     Usually same FS              Can cross FS
+             │                           │
+             ▼                           ▼
+    Survives other name          Can become broken
+       being deleted             if target is deleted
+
+---
+
+# 🔥 Most Important Interview Points
+
+1. Inode stores metadata, not normally the filename.
+2. Hard links point to the same inode.
+3. Symbolic links store a target path.
+4. Hard links share the same inode number.
+5. Symbolic links have their own inode.
+6. Hard links generally cannot cross filesystems.
+7. Symbolic links can cross filesystems.
+8. Hard links normally cannot point to directories.
+9. Symbolic links can point to directories.
+10. Deleting one hard-link filename does not necessarily delete the data.
+11. Deleting a symlink target makes the symlink dangling.
+12. ln creates hard links by default.
+13. ln -s creates symbolic links.
+14. ls -li is useful for comparing inode numbers.
+15. ls -l and readlink help inspect symbolic links.
+
+---
+
+# 🐧 Linux Quest — Lesson 09 Interview Prep
+
+Topic: Linux File Links
+
+Status:
+
+🟢 Inodes — Complete
+🟢 Hard Links — Complete
+🟢 Symbolic Links — Complete
+🟢 Link Count — Complete
+🟢 Broken Symlinks — Complete
+🟢 Filesystem Boundaries — Complete
+🟢 Interview Questions — Complete
+🟢 Scenario Questions — Complete
+🟢 Practical Task — Complete
+🟢 Rapid Revision — Complete
+
+🚀 Lesson 09 Interview Preparation Complete!
