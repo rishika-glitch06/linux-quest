@@ -354,3 +354,76 @@ Hands-on Lab        → 🟢 Complete
 Interview Prep      → 🟢 Complete
 
 Status: 🟢 Complete
+
+# 🔗 Lesson 09 — Linux File Links
+
+Learn how Linux uses hard links and symbolic links to create multiple references to files and directories, and understand inodes, link counts, broken symlinks, and filesystem boundaries.
+
+## 📚 Topics Covered
+
+- Linux File Links
+- Inodes
+- Directory Entries
+- Hard Links
+- Symbolic Links
+- Soft Links
+- Hard Link vs Symbolic Link
+- Link Count
+- File Data and Inodes
+- Broken Symlinks
+- Dangling Symlinks
+- Absolute Symbolic Links
+- Relative Symbolic Links
+- Hard Links and Filesystems
+- Symbolic Links and Filesystems
+- Hard Links to Directories
+- Symbolic Links to Directories
+- `ln`
+- `ln -s`
+- `ls -l`
+- `ls -li`
+- `readlink`
+- `readlink -f`
+- `stat`
+- `find . -type l`
+- `find . -xtype l`
+- Real-World Use Cases of Symbolic Links
+
+---
+
+## 🖼️ Visual Learning
+
+📊 [Linux File Links Diagram](../../assets/diagrams/linux-file-links.md)
+
+---
+
+## 💼 Interview Preparation
+
+🎯 [Linux File Links Interview Questions](../../interview-prep/linux-file-system.md)
+
+---
+
+## 🧪 Hands-on Lab
+
+🔬 [Linux File Links Lab](../../labs/08-linux-file-links-lab.md)
+
+---
+
+## ✅ Progress
+
+- [x] Lesson 09 — Linux File Links
+- [x] Diagram
+- [x] Interview Preparation
+- [x] Hands-on Lab
+
+**Status: 🟢 Complete**
+
+---
+
+## 🔗 Navigation
+
+⬅️ **Previous:** Lesson 08 — Inodes & File Metadata
+
+➡️ **Next:** Lesson 10 — File Permissions & Ownership (Coming Soon)
+
+---
