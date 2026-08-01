@@ -427,3 +427,195 @@ Learn how Linux uses hard links and symbolic links to create multiple references
 ➡️ **Next:** Lesson 10 — File Permissions & Ownership (Coming Soon)
 
 ---
+
+# 🔐 Lesson 10 — Linux File Permissions & Ownership
+
+Learn how Linux controls access to files and directories using permissions, ownership, groups, `chmod`, `chown`, special permissions, and security principles.
+
+## 📚 Topics Covered
+
+- Linux File Permissions
+- User / Owner
+- Group
+- Others
+- Read Permission (`r`)
+- Write Permission (`w`)
+- Execute Permission (`x`)
+- Permission Strings
+- Numeric Permissions
+- Symbolic Permissions
+- Permission Values (`0–7`)
+- `ls -l`
+- `ls -ld`
+- `chmod`
+- Numeric `chmod`
+- Symbolic `chmod`
+- `chown`
+- `chgrp`
+- File Ownership
+- Group Ownership
+- Recursive Ownership
+- File Permissions vs Directory Permissions
+- `umask`
+- Default File Permissions
+- Default Directory Permissions
+- SUID
+- SGID
+- Sticky Bit
+- Special Permissions
+- Permission Denied Troubleshooting
+- `stat`
+- `namei`
+- ACL (Access Control List)
+- `getfacl`
+- `setfacl`
+- Principle of Least Privilege
+- Linux File Security
+
+---
+
+## 🖼️ Visual Learning
+
+📊 [Linux File Permissions & Ownership Diagram](../../assets/diagrams/linux-file-permissions-and-ownership.md)
+
+---
+
+## 📖 Main Content
+
+📚 [Linux File Permissions & Ownership — Main Content](10-file-permissions-and-ownership.md)
+
+---
+
+## 💼 Interview Preparation
+
+🎯 [Linux File Permissions & Ownership Interview Questions](../../interview-prep/linux-file-system.md)
+
+---
+
+## 🧪 Hands-on Lab
+
+🔬 [Linux File Permissions & Ownership Lab](../../labs/10-linux-file-permissions-and-ownership-lab.md)
+
+---
+
+## 🧠 Quick Revision
+
+### Permission Values
+
+r = Read = 4  
+w = Write = 2  
+x = Execute = 1
+
+### Common Permissions
+
+600 → Owner Read + Write
+
+644 → Owner Read + Write  
+      Group Read  
+      Others Read
+
+700 → Owner Full Access
+
+755 → Owner Full Access  
+      Group Read + Execute  
+      Others Read + Execute
+
+775 → Owner + Group Full Access  
+      Others Read + Execute
+
+777 → Everyone Full Access
+
+### Special Permissions
+
+SUID  
+↓  
+Owner Privileges
+
+SGID  
+↓  
+Group Privileges / Group Inheritance
+
+Sticky Bit  
+↓  
+Restrict File Deletion in Shared Directories
+
+---
+
+## 🎯 Learning Path
+
+Lesson 10  
+    │  
+    ▼  
+Linux File Permissions  
+    │  
+    ▼  
+User / Group / Others  
+    │  
+    ▼  
+Read / Write / Execute  
+    │  
+    ▼  
+chmod  
+    │  
+    ▼  
+chown / chgrp  
+    │  
+    ▼  
+umask  
+    │  
+    ▼  
+SUID / SGID / Sticky Bit  
+    │  
+    ▼  
+ACL  
+    │  
+    ▼  
+Permission Troubleshooting  
+    │  
+    ▼  
+Linux File Security
+
+---
+
+## ✅ Progress
+
+- [x] Lesson 10 — Linux File Permissions & Ownership
+- [x] Main Content
+- [x] Diagram
+- [x] Interview Preparation
+- [x] Hands-on Lab
+
+**Status: 🟢 Complete**
+
+---
+
+## 🔗 Navigation
+
+⬅️ **Previous:** Lesson 09 — Linux File & Directory Management
+
+➡️ **Next:** Lesson 11 — Linux Users & Groups (Coming Soon)
+
+---
+
+## 🐧 Level 02 Progress
+
+Level 02 — Linux File System
+
+🟢 Lesson 01 — Linux File System Basics  
+🟢 Lesson 02 — Important Linux Directories  
+🟢 Lesson 03 — Linux Paths & Navigation  
+🟢 Lesson 04 — File & Directory Management  
+🟢 Lesson 05 — File Permissions & Ownership  
+🟢 Lesson 06 — Linux Users & Groups  
+🟢 Lesson 07 — Linux File System Lab  
+🟢 Lesson 08 — Linux File System Interview Preparation  
+🟢 Lesson 09 — Linux File & Directory Management  
+🟢 Lesson 10 — Linux File Permissions & Ownership
+
+**Level 02 Status: 🟢 In Progress**
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 10**
+
+> *Understand. Control. Secure.*
