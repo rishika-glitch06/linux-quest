@@ -6366,3 +6366,1565 @@ Status:
 🟢 Rapid Revision — Complete
 
 🚀 Lesson 09 Interview Preparation Complete!
+
+# 💼 Linux File Permissions & Ownership — Interview Preparation
+
+> Interview questions and answers covering Linux file permissions, ownership, chmod, chown, chgrp, umask, SUID, SGID, Sticky Bit, and Linux security.
+
+---
+
+# 1. What are Linux file permissions?
+
+Linux file permissions control who can access a file or directory and what actions they can perform.
+
+There are three main types of permissions:
+
+    r → Read
+    w → Write
+    x → Execute
+
+There are three main categories of users:
+
+    User / Owner
+    Group
+    Others
+
+Example:
+
+    -rwxr-xr--
+
+Meaning:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r--
+
+---
+
+# 2. What do r, w, and x mean?
+
+For files:
+
+    r → Read file contents
+    w → Modify file contents
+    x → Execute the file
+
+For directories:
+
+    r → List directory contents
+    w → Create, delete, or rename entries
+    x → Enter or traverse the directory
+
+Important:
+
+Directory permissions behave differently from file permissions.
+
+---
+
+# 3. What are User, Group, and Others?
+
+Linux permissions are divided into three categories:
+
+    User (u)
+        ↓
+    File owner
+
+    Group (g)
+        ↓
+    Users belonging to the file's group
+
+    Others (o)
+        ↓
+    Everyone else
+
+Example:
+
+    -rwxr-xr--
+
+    rwx → User
+    r-x → Group
+    r-- → Others
+
+---
+
+# 4. How do you check file permissions?
+
+Use:
+
+    ls -l
+
+Example:
+
+    ls -l file.txt
+
+Output:
+
+    -rw-r--r-- 1 rishika developers 100 file.txt
+
+The first section represents permissions:
+
+    -rw-r--r--
+
+The next fields represent:
+
+    Owner → rishika
+    Group → developers
+
+---
+
+# 5. Explain the permission string -rwxr-xr--
+
+Breakdown:
+
+    - | rwx | r-x | r--
+      |     |     |
+      |     |     └── Others
+      |     └──────── Group
+      └────────────── Owner
+
+Meaning:
+
+    -    → Regular file
+    rwx  → Owner has Read + Write + Execute
+    r-x  → Group has Read + Execute
+    r--  → Others have Read only
+
+Numeric equivalent:
+
+    rwx = 7
+    r-x = 5
+    r-- = 4
+
+Therefore:
+
+    754
+
+---
+
+# 6. What is chmod?
+
+`chmod` stands for Change Mode.
+
+It is used to change file and directory permissions.
+
+Example:
+
+    chmod 755 script.sh
+
+This sets:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+Another example:
+
+    chmod 600 secret.txt
+
+This gives:
+
+    Owner  → Read + Write
+    Group  → No Access
+    Others → No Access
+
+---
+
+# 7. What is the difference between symbolic and numeric chmod?
+
+Numeric mode uses numbers:
+
+    chmod 755 file.txt
+
+Symbolic mode uses letters and operators:
+
+    chmod u+x script.sh
+
+Where:
+
+    u → User
+    g → Group
+    o → Others
+    a → All
+
+Operators:
+
+    + → Add permission
+    - → Remove permission
+    = → Set exact permission
+
+Examples:
+
+    chmod u+x script.sh
+    chmod g-w file.txt
+    chmod o+r file.txt
+    chmod a+x script.sh
+
+---
+
+# 8. What do the numbers 4, 2, and 1 represent?
+
+Linux uses numeric permission values:
+
+    Read
+      ↓
+      4
+
+    Write
+      ↓
+      2
+
+    Execute
+      ↓
+      1
+
+Permissions are added together.
+
+Examples:
+
+    rwx = 4 + 2 + 1 = 7
+
+    rw- = 4 + 2 = 6
+
+    r-x = 4 + 1 = 5
+
+    r-- = 4
+
+Therefore:
+
+    755 = rwxr-xr-x
+
+---
+
+# 9. What does chmod 777 mean?
+
+    chmod 777 file
+
+Means:
+
+    Owner  → rwx
+    Group  → rwx
+    Others → rwx
+
+Everyone has full permissions.
+
+This is generally considered insecure because any user can modify or execute the file.
+
+Better practice:
+
+Use the minimum permissions required.
+
+This follows the:
+
+    Principle of Least Privilege
+
+---
+
+# 10. What does chmod 755 mean?
+
+    chmod 755 script.sh
+
+Means:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+The owner can:
+
+    Read
+    Write
+    Execute
+
+Group and others can:
+
+    Read
+    Execute
+
+This is commonly used for executable scripts and directories.
+
+---
+
+# 11. What does chmod 644 mean?
+
+    chmod 644 file.txt
+
+Means:
+
+    Owner  → rw-
+    Group  → r--
+    Others → r--
+
+The owner can read and modify the file.
+
+Everyone else can only read it.
+
+This is a common permission for regular files.
+
+---
+
+# 12. What does chmod 600 mean?
+
+    chmod 600 secret.txt
+
+Means:
+
+    Owner  → rw-
+    Group  → ---
+    Others → ---
+
+Only the owner can read and write the file.
+
+It is commonly used for:
+
+    Private files
+    SSH keys
+    Sensitive configuration files
+
+---
+
+# 13. What is the difference between file and directory permissions?
+
+For a file:
+
+    r → Read contents
+    w → Modify contents
+    x → Execute
+
+For a directory:
+
+    r → List contents
+    w → Create/Delete/Rename entries
+    x → Enter/Traverse directory
+
+Example:
+
+A directory with `r` but without `x` may allow listing names but not accessing the files inside.
+
+A directory with `x` but without `r` may allow accessing known file names but not listing the directory contents.
+
+---
+
+# 14. What is file ownership in Linux?
+
+Every file and directory has:
+
+    Owner
+    Group
+
+Example:
+
+    -rw-r--r-- 1 rishika developers file.txt
+
+Here:
+
+    Owner → rishika
+    Group → developers
+
+Permissions are then applied based on:
+
+    Owner
+    Group
+    Others
+
+---
+
+# 15. What is chown?
+
+`chown` stands for Change Owner.
+
+It is used to change the ownership of a file or directory.
+
+Example:
+
+    sudo chown rishika file.txt
+
+Change owner and group:
+
+    sudo chown rishika:developers file.txt
+
+Recursive:
+
+    sudo chown -R rishika:developers project/
+
+The `-R` option applies the change recursively.
+
+---
+
+# 16. What is chgrp?
+
+`chgrp` stands for Change Group.
+
+It changes the group ownership of a file or directory.
+
+Example:
+
+    sudo chgrp developers file.txt
+
+This changes the group to:
+
+    developers
+
+---
+
+# 17. What is the difference between chown and chgrp?
+
+`chown`:
+
+    Changes owner
+    Can also change group
+
+Example:
+
+    chown user:group file
+
+`chgrp`:
+
+    Changes only group ownership
+
+Example:
+
+    chgrp group file
+
+---
+
+# 18. What is umask?
+
+`umask` controls the default permissions assigned to newly created files and directories.
+
+Check current umask:
+
+    umask
+
+Example:
+
+    0022
+
+Typical base permissions:
+
+    Files       → 666
+    Directories → 777
+
+With umask `022`:
+
+    New File:
+    666 - 022 → 644
+
+    New Directory:
+    777 - 022 → 755
+
+The exact calculation is permission-bit based rather than ordinary decimal subtraction, but this is a useful conceptual shortcut.
+
+---
+
+# 19. Why do newly created files usually not have execute permission?
+
+Files typically start from a base permission of:
+
+    666
+
+This means:
+
+    rw-rw-rw-
+
+The execute bit is not included by default.
+
+This is a security measure.
+
+For example, a newly created text file should not automatically become executable.
+
+Directories use a base of:
+
+    777
+
+Then `umask` removes permissions as configured.
+
+---
+
+# 20. What is SUID?
+
+SUID stands for:
+
+    Set User ID
+
+When SUID is set on an executable file, the program runs with the privileges of the file owner rather than the privileges of the user who launched it.
+
+Example permission:
+
+    -rwsr-xr-x
+
+The `s` in the owner's execute position represents SUID.
+
+Set SUID:
+
+    chmod u+s file
+
+Numeric form:
+
+    chmod 4755 file
+
+Security note:
+
+SUID executables should be carefully audited because vulnerabilities in privileged programs can create security risks.
+
+---
+
+# 21. What is SGID?
+
+SGID stands for:
+
+    Set Group ID
+
+For executable files:
+
+The program runs with the privileges of the file's group.
+
+For directories:
+
+New files and directories created inside inherit the directory's group ownership.
+
+Set SGID:
+
+    chmod g+s directory/
+
+Numeric form:
+
+    chmod 2775 directory/
+
+Example:
+
+    drwxrwsr-x
+
+The `s` in the group execute position represents SGID.
+
+---
+
+# 22. What is Sticky Bit?
+
+Sticky Bit is commonly used on shared directories.
+
+It restricts users from deleting or renaming files owned by other users in the directory, even when the directory is writable by everyone.
+
+Example:
+
+    drwxrwxrwt
+
+The final `t` represents Sticky Bit.
+
+Set Sticky Bit:
+
+    chmod +t shared/
+
+Numeric form:
+
+    chmod 1777 shared/
+
+A common example is:
+
+    /tmp
+
+---
+
+# 23. What are SUID, SGID, and Sticky Bit?
+
+Linux has three major special permission bits:
+
+    SUID
+      ↓
+    4
+      ↓
+    Execute with file owner's privileges
+
+    SGID
+      ↓
+    2
+      ↓
+    Execute with group privileges
+    or inherit group on directories
+
+    Sticky Bit
+      ↓
+    1
+      ↓
+    Restrict deletion in shared directories
+
+Numeric examples:
+
+    4755 → SUID + 755
+    2775 → SGID + 775
+    1777 → Sticky Bit + 777
+
+---
+
+# 24. What is the difference between SUID and SGID?
+
+SUID:
+
+    Uses the file owner's privileges.
+
+SGID:
+
+    Uses the file group's privileges.
+
+For directories:
+
+    SGID causes new files and directories
+    to inherit the directory's group.
+
+---
+
+# 25. Why is /tmp usually configured with Sticky Bit?
+
+`/tmp` is a shared writable directory.
+
+Many users and processes may create files there.
+
+Without Sticky Bit:
+
+One user could potentially delete or rename another user's files if directory write permissions allowed it.
+
+With Sticky Bit:
+
+Users generally can delete only:
+
+    Their own files
+    Or files they otherwise have authority to manage
+
+Typical permission:
+
+    drwxrwxrwt
+
+---
+
+# 26. What is the Principle of Least Privilege?
+
+The Principle of Least Privilege means:
+
+A user or process should receive only the minimum permissions required to perform its task.
+
+Bad practice:
+
+    chmod 777 file
+
+Better:
+
+    chmod 600 secret.txt
+
+Or:
+
+    chmod 755 script.sh
+
+The goal is:
+
+    Minimum Access
+          ↓
+    Lower Security Risk
+
+---
+
+# 27. What does Permission Denied mean?
+
+A `Permission denied` error usually means the current user does not have the required permission.
+
+Possible causes:
+
+    Wrong owner
+    Wrong group
+    Missing read permission
+    Missing write permission
+    Missing execute permission
+    Parent directory lacks execute permission
+    Filesystem mounted read-only
+    ACL restrictions
+    SELinux/AppArmor restrictions
+
+Useful commands:
+
+    ls -l file
+    ls -ld directory
+    whoami
+    id
+    stat file
+    namei -l /path/to/file
+
+---
+
+# 28. How do you troubleshoot Permission Denied?
+
+Follow this process:
+
+    Permission Denied
+          │
+          ▼
+    Check current user
+          │
+          ▼
+    whoami
+          │
+          ▼
+    Check ownership
+          │
+          ▼
+    ls -l
+          │
+          ▼
+    Check group membership
+          │
+          ▼
+    id
+          │
+          ▼
+    Check permissions
+          │
+          ▼
+    Check parent directory
+          │
+          ▼
+    Check ACL / SELinux
+          │
+          ▼
+    Fix only required permission
+
+Do not immediately use:
+
+    chmod 777
+
+Always understand the actual cause first.
+
+---
+
+# 29. Can a user delete a file if they do not have write permission on the file?
+
+Yes.
+
+File deletion is controlled mainly by the permissions of the parent directory, not the file itself.
+
+For example:
+
+    Directory:
+    rwx
+
+A user may be able to delete a file even if the file itself is:
+
+    r--
+
+However, Sticky Bit can restrict deletion in shared directories.
+
+---
+
+# 30. Can you modify a file without having write permission on the file?
+
+Normally, no.
+
+To modify a file, the user generally needs write permission on the file.
+
+However, other mechanisms such as:
+
+    Root privileges
+    ACLs
+    Capabilities
+    Application-specific behavior
+
+may affect access.
+
+---
+
+# 31. Can you access a file inside a directory without execute permission on the directory?
+
+Normally, no.
+
+The directory's execute (`x`) permission is required to traverse the directory.
+
+For example:
+
+    /home/user/project/file.txt
+
+You need execute permission on the relevant directories in the path to access the file.
+
+Use:
+
+    namei -l /home/user/project/file.txt
+
+to inspect permissions along the path.
+
+---
+
+# 32. What is the difference between chmod 755 and chmod 775?
+
+`755`:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+`775`:
+
+    Owner  → rwx
+    Group  → rwx
+    Others → r-x
+
+Difference:
+
+    755 → Group cannot write
+
+    775 → Group can write
+
+`775` is useful for shared project directories where members of the same group need write access.
+
+---
+
+# 33. What is the difference between chmod 644 and chmod 600?
+
+`644`:
+
+    Owner  → rw-
+    Group  → r--
+    Others → r--
+
+`600`:
+
+    Owner  → rw-
+    Group  → ---
+    Others → ---
+
+Therefore:
+
+    644 → Everyone can read
+
+    600 → Only owner can read/write
+
+Use `600` for sensitive files.
+
+---
+
+# 34. What is the difference between chmod 700 and chmod 755?
+
+`700`:
+
+    Owner  → rwx
+    Group  → ---
+    Others → ---
+
+`755`:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+Therefore:
+
+    700 → Private
+
+    755 → Publicly accessible for read/execute
+
+---
+
+# 35. What does chmod 000 do?
+
+    chmod 000 file
+
+Removes all permissions:
+
+    Owner  → ---
+    Group  → ---
+    Others → ---
+
+No normal user permission is granted.
+
+Root or other privileged mechanisms may still access the file.
+
+Restore permissions with:
+
+    chmod 644 file
+
+or the required permission mode.
+
+---
+
+# 36. How do you make a file executable?
+
+Use:
+
+    chmod +x script.sh
+
+Or:
+
+    chmod u+x script.sh
+
+Then run:
+
+    ./script.sh
+
+Check:
+
+    ls -l script.sh
+
+Expected:
+
+    -rwx...
+
+---
+
+# 37. How do you remove execute permission?
+
+Use:
+
+    chmod -x script.sh
+
+Or:
+
+    chmod u-x script.sh
+
+This removes execute permission according to the symbolic target.
+
+---
+
+# 38. What is the difference between `ls -l` and `ls -ld`?
+
+`ls -l`:
+
+Displays information about files and lists directory contents.
+
+Example:
+
+    ls -l directory/
+
+`ls -ld`:
+
+Displays information about the directory itself.
+
+Example:
+
+    ls -ld directory/
+
+This is useful when you want to inspect directory permissions instead of the files inside it.
+
+---
+
+# 39. What is stat?
+
+`stat` provides detailed information about a file.
+
+Use:
+
+    stat file.txt
+
+It can show:
+
+    File type
+    Size
+    Permissions
+    Owner
+    Group
+    Inode
+    Access time
+    Modification time
+    Change time
+
+---
+
+# 40. What is an inode?
+
+An inode is a data structure used by Linux filesystems to store metadata about a file.
+
+It contains information such as:
+
+    File type
+    Permissions
+    Owner
+    Group
+    File size
+    Timestamps
+    Link count
+    Pointers to data blocks
+
+The filename itself is stored in the directory entry, which maps the name to the inode.
+
+---
+
+# 41. What happens when you run chmod?
+
+When you execute:
+
+    chmod 755 file.txt
+
+Linux changes the permission bits associated with the file's metadata.
+
+It does not change:
+
+    File contents
+    File name
+    File size
+
+It changes access permissions.
+
+---
+
+# 42. Does chmod change file ownership?
+
+No.
+
+`chmod` changes:
+
+    Permissions
+
+`chown` changes:
+
+    Owner
+
+`chgrp` changes:
+
+    Group
+
+Remember:
+
+    chmod
+      ↓
+    Permissions
+
+    chown
+      ↓
+    Owner
+
+    chgrp
+      ↓
+    Group
+
+---
+
+# 43. What is the security risk of chmod 777?
+
+`chmod 777` gives everyone:
+
+    Read
+    Write
+    Execute
+
+This can allow unauthorized users to:
+
+    Modify files
+    Delete content
+    Replace scripts
+    Inject malicious code
+
+It violates the Principle of Least Privilege.
+
+Therefore:
+
+Avoid using `777` unless there is a specific, well-understood reason.
+
+---
+
+# 44. What is a secure permission for a private file?
+
+A common choice is:
+
+    chmod 600 secret.txt
+
+This gives:
+
+    Owner → Read + Write
+    Group → No Access
+    Others → No Access
+
+For a private directory:
+
+    chmod 700 private/
+
+---
+
+# 45. What permissions are commonly used for SSH private keys?
+
+SSH private keys are commonly protected with:
+
+    chmod 600 ~/.ssh/id_rsa
+
+or an equivalent restrictive permission.
+
+The exact expected permissions can depend on the SSH implementation and key type, but private keys should not be broadly readable.
+
+---
+
+# 46. What is the difference between permissions and ownership?
+
+Ownership answers:
+
+    Who owns this file?
+
+Permissions answer:
+
+    What can the owner, group, and others do?
+
+Example:
+
+    Owner = rishika
+    Group = developers
+
+Permissions:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r--
+
+Both ownership and permissions work together to control access.
+
+---
+
+# 47. What is an ACL?
+
+ACL stands for:
+
+    Access Control List
+
+ACLs provide more fine-grained permissions than traditional User / Group / Others permissions.
+
+For example, you can give a specific user additional access without changing the main owner or group.
+
+Useful commands:
+
+    getfacl file.txt
+
+    setfacl -m u:username:r file.txt
+
+ACLs are useful when standard Linux permission bits are not sufficient.
+
+---
+
+# 48. What is the difference between traditional permissions and ACLs?
+
+Traditional permissions provide access control for:
+
+    Owner
+    Group
+    Others
+
+ACLs allow more detailed rules for:
+
+    Specific users
+    Specific groups
+
+Therefore:
+
+Traditional permissions → Simple access control
+
+ACLs → Fine-grained access control
+
+---
+
+# 49. What is a practical example of SGID?
+
+Suppose a development team has:
+
+    /project
+
+The directory belongs to:
+
+    developers
+
+Set SGID:
+
+    chmod 2775 /project
+
+Now new files created inside the directory can inherit the `developers` group.
+
+This helps teams collaborate without manually changing group ownership for every file.
+
+---
+
+# 50. Scenario-Based Interview Question
+
+### Scenario:
+
+You have a shared project directory:
+
+    /project
+
+Requirements:
+
+    Owner → Full Access
+    Group → Full Access
+    Others → Read + Execute
+
+What permission should you use?
+
+Answer:
+
+    chmod 775 /project
+
+Permissions:
+
+    Owner  → rwx
+    Group  → rwx
+    Others → r-x
+
+---
+
+# 51. Scenario-Based Interview Question
+
+### Scenario:
+
+You have a secret configuration file.
+
+Only the owner should read and modify it.
+
+What permission should you use?
+
+Answer:
+
+    chmod 600 config.txt
+
+Permissions:
+
+    Owner  → rw-
+    Group  → ---
+    Others → ---
+
+---
+
+# 52. Scenario-Based Interview Question
+
+### Scenario:
+
+A script should be executable by everyone, but only the owner should modify it.
+
+What permission should you use?
+
+Answer:
+
+    chmod 755 script.sh
+
+Permissions:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+---
+
+# 53. Scenario-Based Interview Question
+
+### Scenario:
+
+Multiple users need to write to a shared directory, but users should not delete each other's files.
+
+What should you use?
+
+Answer:
+
+    Sticky Bit
+
+Example:
+
+    chmod 1777 shared/
+
+This creates:
+
+    drwxrwxrwt
+
+The Sticky Bit restricts deletion or renaming of files by users who do not own them.
+
+---
+
+# 54. Scenario-Based Interview Question
+
+### Scenario:
+
+All files created inside a shared project directory should automatically inherit the project's group.
+
+What should you use?
+
+Answer:
+
+    SGID
+
+Example:
+
+    chmod g+s project/
+
+Or:
+
+    chmod 2775 project/
+
+This helps maintain consistent group ownership.
+
+---
+
+# 55. Scenario-Based Interview Question
+
+### Scenario:
+
+A user gets Permission Denied while accessing:
+
+    /home/user/project/file.txt
+
+What would you check?
+
+Answer:
+
+Check:
+
+    whoami
+
+Then:
+
+    id
+
+Then:
+
+    ls -l /home/user/project/file.txt
+
+Check directory permissions:
+
+    ls -ld /home/user
+    ls -ld /home/user/project
+
+Check every directory in the path:
+
+    namei -l /home/user/project/file.txt
+
+Also check:
+
+    ACLs
+    SELinux
+    AppArmor
+    Read-only filesystem
+
+Do not immediately use `chmod 777`.
+
+---
+
+# 56. Quick Interview Revision
+
+    r = Read = 4
+
+    w = Write = 2
+
+    x = Execute = 1
+
+    chmod
+        ↓
+    Change Permissions
+
+    chown
+        ↓
+    Change Owner
+
+    chgrp
+        ↓
+    Change Group
+
+    umask
+        ↓
+    Default Permissions
+
+    SUID
+        ↓
+    File Owner Privileges
+
+    SGID
+        ↓
+    Group Privileges / Group Inheritance
+
+    Sticky Bit
+        ↓
+    Restrict Deletion in Shared Directories
+
+---
+
+# 57. 📊 Important Permission Values
+
+| Permission | Numeric | Meaning |
+|---|---:|---|
+| `---` | 0 | No permission |
+| `--x` | 1 | Execute |
+| `-w-` | 2 | Write |
+| `-wx` | 3 | Write + Execute |
+| `r--` | 4 | Read |
+| `r-x` | 5 | Read + Execute |
+| `rw-` | 6 | Read + Write |
+| `rwx` | 7 | Read + Write + Execute |
+
+---
+
+# 58. 📊 Important chmod Values
+
+| Command | Meaning |
+|---|---|
+| `chmod 600 file` | Owner Read + Write only |
+| `chmod 644 file` | Owner Read + Write, Others Read |
+| `chmod 700 dir` | Owner Full Access only |
+| `chmod 755 file` | Owner Full, Others Read + Execute |
+| `chmod 775 dir` | Owner + Group Full, Others Read + Execute |
+| `chmod 777 file` | Everyone Full Access |
+| `chmod 4755 file` | SUID + 755 |
+| `chmod 2775 dir` | SGID + 775 |
+| `chmod 1777 dir` | Sticky Bit + 777 |
+
+---
+
+# 59. 🎯 Top 10 Interview Questions
+
+1. What are Linux file permissions?
+
+2. Explain User, Group, and Others.
+
+3. What do Read, Write, and Execute permissions mean?
+
+4. Explain `chmod 755`.
+
+5. What is the difference between `chmod 644` and `chmod 600`?
+
+6. What is the difference between `chmod`, `chown`, and `chgrp`?
+
+7. What is SUID, SGID, and Sticky Bit?
+
+8. What is `umask`?
+
+9. How would you troubleshoot Permission Denied?
+
+10. Why should you avoid `chmod 777`?
+
+---
+
+# 🏆 Interview Quick Answer Sheet
+
+Question:
+What is chmod?
+
+Answer:
+`chmod` changes file and directory permissions.
+
+Question:
+What is chown?
+
+Answer:
+`chown` changes file ownership.
+
+Question:
+What is chgrp?
+
+Answer:
+`chgrp` changes group ownership.
+
+Question:
+What is umask?
+
+Answer:
+`umask` controls default permissions for newly created files and directories.
+
+Question:
+What is SUID?
+
+Answer:
+SUID allows an executable to run with the privileges of its file owner.
+
+Question:
+What is SGID?
+
+Answer:
+SGID allows an executable to run with group privileges and causes new files in an SGID directory to inherit its group.
+
+Question:
+What is Sticky Bit?
+
+Answer:
+Sticky Bit restricts users from deleting or renaming files owned by other users in a shared writable directory.
+
+Question:
+What is 755?
+
+Answer:
+
+    Owner  → rwx
+    Group  → r-x
+    Others → r-x
+
+Question:
+What is 644?
+
+Answer:
+
+    Owner  → rw-
+    Group  → r--
+    Others → r--
+
+Question:
+What is 600?
+
+Answer:
+
+    Owner  → rw-
+    Group  → ---
+    Others → ---
+
+---
+
+# 🎯 Final Interview Mental Model
+
+                         LINUX ACCESS CONTROL
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+              ▼                   ▼                   ▼
+          OWNERSHIP           PERMISSIONS        SPECIAL BITS
+              │                   │                   │
+        ┌─────┴─────┐        ┌────┼────┐        ┌────┼────┐
+        │           │        │    │    │        │    │    │
+        ▼           ▼        ▼    ▼    ▼        ▼    ▼    ▼
+      OWNER       GROUP      r    w    x       SUID SGID Sticky
+        │           │        │    │    │
+        └─────┬─────┘        4    2    1
+              │
+              ▼
+        ACCESS DECISION
+              │
+        ┌─────┴─────┐
+        │           │
+        ▼           ▼
+      ALLOW        DENY
+        │
+        ▼
+   Secure Access
+
+---
+
+# 🐧 Chapter 10 — Linux File Permissions & Ownership
+
+## Interview Preparation Checklist
+
+- [x] File Permissions
+- [x] User / Group / Others
+- [x] Read / Write / Execute
+- [x] Permission Strings
+- [x] Numeric Permissions
+- [x] `chmod`
+- [x] Symbolic Permissions
+- [x] `chown`
+- [x] `chgrp`
+- [x] `umask`
+- [x] SUID
+- [x] SGID
+- [x] Sticky Bit
+- [x] File vs Directory Permissions
+- [x] Permission Denied Troubleshooting
+- [x] ACL Basics
+- [x] Principle of Least Privilege
+- [x] Scenario-Based Questions
+- [x] Quick Revision
+
+**Status: 🟢 Complete**
+
+---
+
+## 🔗 Related Resources
+
+📖 [Lesson 10 — Linux File Permissions & Ownership](../levels/level-02-file-system/10-file-permissions-and-ownership.md)
+
+🧪 [Linux File Permissions & Ownership Lab](../labs/10-linux-file-permissions-and-ownership-lab.md)
+
+🏠 [Back to Linux Quest](../README.md)
+
+---
+
+> 🐧 **Linux Quest — Level 02, Lesson 10**
+
+> *Understand. Control. Secure.*
